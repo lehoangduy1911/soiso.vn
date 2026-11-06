@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOI SỐ #005 · Bóc tách 'cỗ máy tự doanh' 23.000 tỷ của Chứng khoán VIX: FVTPL chiếm 70% vốn chủ và bài toán độ nhạy thị trường</title>
+<style>
+  :root {
+    --bg-page: #f8fafc;
+    --bg-card: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --accent-blue: #1e3a8a;
+    --accent-red: #b91c1c;
+    --accent-green: #047857;
+    --accent-amber: #b45309;
+    --border-color: #e2e8f0;
+    --font-serif: "Merriweather", Georgia, Cambria, serif;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "JetBrains Mono", Consolas, monospace;
+  }
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: var(--font-serif);
+    line-height: 1.85;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 840px;
+    margin: 40px auto;
+    background: var(--bg-card);
+    padding: 60px 80px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+  }
+  @media (max-width: 768px) {
+    .container { margin: 0; padding: 24px 20px; border-radius: 0; border: none; }
+  }
+  .meta-header {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-blue);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: #eff6ff;
+    color: #1d4ed8;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 1px solid #bfdbfe;
+  }
+  .badge-amber {
+    background: #fef3c7;
+    color: #b45309;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 1px solid #fde68a;
+  }
+  .meta-sub {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+  h1 {
+    font-family: var(--font-sans);
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  .lead {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    font-style: italic;
+    border-left: 4px solid #3b82f6;
+    padding-left: 20px;
+    margin-bottom: 35px;
+  }
+  .hero-metric-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 35px 0;
+    font-family: var(--font-sans);
+  }
+  @media (max-width: 640px) {
+    .hero-metric-grid { grid-template-columns: 1fr; }
+  }
+  .metric-card {
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .metric-value {
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--accent-blue);
+    line-height: 1.1;
+  }
+  .metric-value.red { color: var(--accent-red); }
+  .metric-value.amber { color: var(--accent-amber); }
+  .metric-value.green { color: var(--accent-green); }
+  .metric-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-top: 8px;
+  }
+  .metric-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+  h2 {
+    font-family: var(--font-sans);
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-top: 45px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  h3 {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    margin-top: 28px;
+    margin-bottom: 12px;
+  }
+  p {
+    margin-bottom: 22px;
+    text-align: justify;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+  }
+  th, td {
+    padding: 12px 14px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+  }
+  th {
+    background-color: #f1f5f9;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+  tr:nth-child(even) { background-color: #f8fafc; }
+  .data-highlight {
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-left: 4px solid #1e3a8a;
+    padding: 18px 24px;
+    border-radius: 8px;
+    margin: 30px 0;
+  }
+  .data-highlight h4 {
+    margin: 0 0 10px 0;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: #1e3a8a;
+  }
+  .data-highlight ul {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+  .ref-list {
+    margin-top: 45px;
+    padding: 24px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+  }
+  .ref-list h4 {
+    margin-top: 0;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+  .footer-sig {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="meta-header">
+    <span class="badge">SOI SỐ #005</span>
+    <span class="badge-amber">TÀI CHÍNH & THỊ TRƯỜNG VỐN</span>
+    <span>HOSE: VIX</span>
+    <span>•</span>
+    <span>NGHIÊN CỨU THỰC CHỨNG</span>
+  </div>
+  
+  <div class="meta-sub">
+    Xuất bản: 06/11/2026 · Thời lượng: 25 phút đọc (~5.200 từ) · Tác giả: <strong>Duy Lê</strong> (soisovn.substack.com)
+  </div>
+
+  <h1>BÓC TÁCH 'CỖ MÁY TỰ DOANH' 23.000 TỶ CỦA CHỨNG KHOÁN VIX: FVTPL CHIẾM 70% VỐN CHỦ VÀ BÀI TOÁN ĐỘ NHẠY THỊ TRƯỜNG</h1>
+
+  <div class="lead">
+    Một nghiên cứu định lượng thực chứng về bảng cân đối kế toán và cấu trúc tài sản của Công ty Cổ phần Chứng khoán VIX (HOSE: VIX). Báo cáo tài chính Quý 3/2026 xác lập quy mô tài sản tự doanh (FVTPL) lên tới 23.099 tỷ đồng, tương đương 58,0% tổng tài sản và bằng 70,3% vốn chủ sở hữu. Trong bối cảnh vốn điều lệ tăng vọt lên mức 24.502 tỷ đồng, đâu là cơ chế truyền dẫn giữa biến động thị trường chứng khoán, danh mục cổ phiếu nắm giữ và rủi ro pha loãng EPS của doanh nghiệp?
+  </div>
+
+  <div class="hero-metric-grid">
+    <div class="metric-card">
+      <div class="metric-value amber">23.099 TỶ</div>
+      <div class="metric-label">Tài Sản FVTPL Tự Doanh</div>
+      <div class="metric-note">58,0% tổng tài sản · 70,3% vốn chủ sở hữu</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value">24.502 TỶ</div>
+      <div class="metric-label">Vốn Điều Lệ Cập Nhật</div>
+      <div class="metric-note">Phát hành 1:1 & cổ tức · Hơn 2,45 tỷ cổ phiếu</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value green">12.442 TỶ</div>
+      <div class="metric-label">Dư Nợ Cho Vay Khách Hàng</div>
+      <div class="metric-note">Margin thuần 12.416 tỷ đồng</div>
+    </div>
+  </div>
+
+  <h2>1. Hiện Tượng Thực Tế: Quy Mô Vốn Nhảy Vọt Lên Top Đầu Thị Trường</h2>
+  <p>Trong cấu trúc ngành dịch vụ tài chính tại Việt Nam, Công ty Cổ phần Chứng khoán VIX (HOSE: VIX) đại diện cho một trường hợp mở rộng quy mô vốn cơ học nhanh nhất lịch sử thị trường chứng khoán. Từ một công ty chứng khoán tầm trung có vốn điều lệ 300 tỷ đồng vào năm 2014 và 1.277 tỷ đồng vào năm 2020, VIX đã thực hiện chuỗi tăng vốn liên tiếp thông qua các đợt chào bán cổ phiếu cho cổ đông hiện hữu tỷ lệ 1:1, chia tách cổ tức và thưởng cổ phiếu.</p>
+
+  <p>Theo báo cáo thường niên và các hồ sơ thay đổi đăng ký kinh doanh được công bố trên Sở Giao dịch Chứng khoán TP.HCM (HOSE) đến tháng 09/2026, vốn điều lệ của VIX đã được nâng từ 15.314 tỷ đồng lên trên <strong>24.502,9 tỷ đồng</strong>, tương đương hơn <strong>2,45 tỷ cổ phiếu lưu hành</strong>. Quy mô vốn điều lệ này đưa VIX vào nhóm 3 công ty chứng khoán có vốn điều lệ lớn nhất thị trường, xếp ngang hàng với các định chế truyền thống lâu năm như SSI và VNDirect.</p>
+
+  <p>Tuy nhiên, sự gia tăng nhanh chóng về vốn điều lệ không biến VIX thành một công ty môi giới đại chúng thuần túy theo mô hình thị phần bán lẻ của SSI, VPS hay Mirae Asset. Cấu trúc tài sản trên Báo cáo tài chính Quý 3/2026 cho thấy trọng tâm kinh doanh của VIX nằm ở một cấu phần hoàn toàn khác: <strong>Mảng tự doanh tài sản tài chính (FVTPL)</strong>.</p>
+
+  <h2>2. Sàng Lọc Thực Thể & Cơ Cấu Tài Sản (Entity & Asset Mapping)</h2>
+  <p>Báo cáo tài chính Quý 3/2026 (kết thúc tại ngày 30/09/2026) của Chứng khoán VIX ghi nhận tổng tài sản đạt <strong>39.860 tỷ đồng</strong> và vốn chủ sở hữu đạt <strong>32.866 tỷ đồng</strong>. Cấu trúc bảng cân đối kế toán được phân bổ như sau:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Hạng mục Tài sản</th>
+        <th>Giá trị tại 30/09/2026 (Tỷ VND)</th>
+        <th>Tỷ trọng / Tổng tài sản</th>
+        <th>Tỷ trọng / Vốn chủ sở hữu</th>
+        <th>Đặc tính hạch toán</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Tài sản tài chính FVTPL</strong></td>
+        <td><strong>23.099</strong></td>
+        <td><strong>58,0%</strong></td>
+        <td><strong>70,3%</strong></td>
+        <td>Đánh giá lại theo giá thị trường qua lãi/lỗ mỗi quý</td>
+      </tr>
+      <tr>
+        <td><strong>Các khoản cho vay (Margin & ứng trước)</strong></td>
+        <td><strong>12.442</strong></td>
+        <td><strong>31,2%</strong></td>
+        <td><strong>37,9%</strong></td>
+        <td>Thu lãi cho vay ký quỹ định kỳ (margin thuần 12.416 tỷ)</td>
+      </tr>
+      <tr>
+        <td><strong>Tài sản tài chính giữ đến ngày đáo hạn (HTM)</strong></td>
+        <td><strong>1.580</strong></td>
+        <td><strong>4,0%</strong></td>
+        <td><strong>4,8%</strong></td>
+        <td>Tiền gửi ngân hàng có kỳ hạn sinh lãi cố định</td>
+      </tr>
+      <tr>
+        <td><strong>Tiền và các khoản tương đương tiền</strong></td>
+        <td><strong>1.320</strong></td>
+        <td><strong>3,3%</strong></td>
+        <td><strong>4,0%</strong></td>
+        <td>Thanh khoản sẵn sàng phục vụ hoạt động môi giới</td>
+      </tr>
+      <tr>
+        <td><strong>Tài sản dài hạn và tài sản khác</strong></td>
+        <td><strong>1.419</strong></td>
+        <td><strong>3,5%</strong></td>
+        <td><strong>4,3%</strong></td>
+        <td>Tài sản cố định, phần mềm, công nợ khác</td>
+      </tr>
+      <tr>
+        <td><strong>TỔNG CỘNG TÀI SẢN</strong></td>
+        <td><strong>39.860</strong></td>
+        <td><strong>100,0%</strong></td>
+        <td><strong>121,3%</strong></td>
+        <td>Nợ phải trả đạt 6.994 tỷ (Đòn bẩy D/E = 0,21x)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Dữ liệu trên chỉ ra hai đặc điểm tài chính có tính chất quyết định:</p>
+  <ul>
+    <li><strong>Đòn bẩy nợ vay thấp:</strong> Tỷ lệ Nợ phải trả / Vốn chủ sở hữu (D/E) của VIX chỉ ở mức <strong>0,21 lần</strong> (tổng nợ 6.994 tỷ trên vốn chủ 32.866 tỷ). Điều này có nghĩa VIX hầu như không tài trợ hoạt động tự doanh bằng nợ vay ngân hàng hay phát hành trái phiếu rủi ro, mà sử dụng trực tiếp nguồn vốn góp chủ sở hữu thu được từ các đợt phát hành tăng vốn của cổ đông.</li>
+    <li><strong>Tỷ lệ tập trung tài sản tự doanh cao:</strong> FVTPL chiếm 70,3% vốn chủ sở hữu. Cơ cấu này biến VIX thành một thực thể tài chính có mức độ nhạy cảm trực tiếp (direct exposure) với thị trường chứng khoán cơ sở cao nhất trong số các công ty chứng khoán niêm yết trên sàn HOSE.</li>
+  </ul>
+
+  <h2>3. Bóc Tách Danh Mục FVTPL: Cấu Trúc Đầu Tư & Rủi Ro Tập Trung</h2>
+  <p>Theo báo cáo kiểm toán năm 2025 và thuyết minh báo cáo tài chính năm 2026, danh mục tài sản tài chính FVTPL của VIX có quy mô hàng chục nghìn tỷ đồng, tập trung chủ yếu vào nhóm cổ phiếu niêm yết và đăng ký giao dịch:</p>
+
+  <h3>3.1. Các Khoản Đầu Tư Trọng Yếu</h3>
+  <p>Các tài liệu kiểm toán và công bố thông tin xác nhận sự hiện diện của các vị thế cổ phiếu quy mô lớn trong danh mục tự doanh của VIX:</p>
+  <ul>
+    <li><strong>Nhóm Ngân hàng:</strong> Khoản đầu tư sở hữu trên 1% vốn tại <em>Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank - VPB)</em> với giá trị thị trường ghi nhận trên 2.700 tỷ đồng, cùng các khoản đầu tư tại <em>Techcombank (TCB)</em> và <em>Eximbank (EIB)</em>.</li>
+    <li><strong>Nhóm Hệ sinh thái Thiết bị Điện & Hạ tầng:</strong> Khoản đầu tư lớn tại <em>Công ty Cổ phần Điện lực Gelex (GEE)</em> và <em>Tập đoàn Gelex (GEX)</em> với giá trị hợp lý hàng nghìn tỷ đồng mỗi mã được duy trì qua nhiều kỳ kế toán.</li>
+    <li><strong>Danh mục cổ phiếu niêm yết khác:</strong> Nắm giữ các cổ phiếu thuộc nhóm bất động sản và công nghiệp vận tải phục vụ chiến lược giao dịch ngắn và trung hạn.</li>
+  </ul>
+
+  <h3>3.2. Cơ Chế Hạch Toán FVTPL Và Tác Động Lên Báo Cáo Lợi Nhuận</h3>
+  <p>Theo Chuẩn mực Kế toán Việt Nam áp dụng cho công ty chứng khoán (Thông tư 210/2014/TT-BTC và Thông tư 334/2016/TT-BTC), tài sản tài chính FVTPL phải được đánh giá lại theo giá thị trường vào ngày kết thúc mỗi kỳ kế toán. Toàn bộ chênh lệch đánh giá tăng hoặc giảm giá trị hợp lý được ghi nhận trực tiếp vào Báo cáo Kết quả Hoạt động kinh doanh thông qua hai chỉ tiêu:</p>
+  <ul>
+    <li><em>Lãi từ các tài sản tài chính ghi nhận thông qua lãi/lỗ (Mã số 01).</em></li>
+    <li><em>Lỗ từ các tài sản tài chính ghi nhận thông qua lãi/lỗ (Mã số 02).</em></li>
+  </ul>
+  <p>Do đó, lợi nhuận kế toán của VIX không phản ánh dòng tiền thực tế thu được (Cash Flow), mà phụ thuộc mật thiết vào biến động giá của thị trường chứng khoán tại đúng ngày chốt sổ quý (ngày 31/03, 30/06, 30/09 và 31/12).</p>
+
+  <h2>4. Phân Tích Độ Nhạy Thực Chứng (Sensitivity Analysis)</h2>
+  <p>Để đánh giá mức độ rủi ro đối với vốn chủ sở hữu khi thị trường chứng khoán biến động, mô hình độ nhạy tĩnh (Static Stress-Test) được thiết lập trên quy mô FVTPL 23.099 tỷ đồng tại ngày 30/09/2026:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Kịch bản Biến động Danh mục FVTPL</th>
+        <th>Giá trị Chênh lệch Đánh giá lại (Tỷ VND)</th>
+        <th>Tác động lên LNST (Ước tính thuế 20%)</th>
+        <th>Tác động lên Vốn chủ sở hữu (%)</th>
+        <th>Ý nghĩa Rủi ro</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Thị trường Tăng +15%</strong></td>
+        <td>+3.465</td>
+        <td>+2.772 tỷ VND</td>
+        <td><strong>+8,4%</strong></td>
+        <td>Lợi nhuận bùng nổ, EPS tăng mạnh</td>
+      </tr>
+      <tr>
+        <td><strong>Thị trường Tăng +5%</strong></td>
+        <td>+1.155</td>
+        <td>+924 tỷ VND</td>
+        <td><strong>+2,8%</strong></td>
+        <td>Lợi nhuận cải thiện nhẹ</td>
+      </tr>
+      <tr>
+        <td><strong>Kịch bản Cơ sở (Đi ngang 0%)</strong></td>
+        <td>0</td>
+        <td>0</td>
+        <td><strong>0,0%</strong></td>
+        <td>Lợi nhuận phụ thuộc hoàn toàn vào Margin & Phí môi giới</td>
+      </tr>
+      <tr>
+        <td><strong>Thị trường Giảm -5%</strong></td>
+        <td>-1.155</td>
+        <td>-924 tỷ VND</td>
+        <td><strong>-2,8%</strong></td>
+        <td>Bào mòn lợi nhuận tích lũy</td>
+      </tr>
+      <tr>
+        <td><strong>Thị trường Giảm -10%</strong></td>
+        <td>-2.310</td>
+        <td>-1.848 tỷ VND</td>
+        <td><strong>-5,6%</strong></td>
+        <td>Xóa sạch lợi nhuận 9 tháng của doanh nghiệp</td>
+      </tr>
+      <tr>
+        <td><strong>Thị trường Giảm -20% (Stress test)</strong></td>
+        <td>-4.620</td>
+        <td>-3.696 tỷ VND</td>
+        <td><strong>-11,2%</strong></td>
+        <td>Thâm hụt vốn chủ sở hữu, rủi ro điều chỉnh định giá sâu</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Kết quả kiểm định độ nhạy cho thấy: Một đợt điều chỉnh giảm 10% của danh mục cổ phiếu mục tiêu tương đương với mức sụt giảm giá trị <strong>2.310 tỷ đồng</strong>. Con số này vượt xa tổng lợi nhuận sau thuế mà VIX tích lũy được trong cả 9 tháng đầu năm 2026 (đạt 388 tỷ đồng). Đây chính là lý do vì sao thị giá VIX thường có hệ số Beta rất cao so với chỉ số chung VN-Index.</p>
+
+  <h2>5. Phân Kỳ Giữa Quy Mô Tài Sản Và Kết Quả Kinh Doanh Thực Tế</h2>
+  <p>Báo cáo tài chính Quý 3/2026 chỉ ra một phân kỳ định lượng đáng chú ý: Trong khi quy mô tài sản FVTPL tăng từ vùng 15.000 tỷ lên 23.099 tỷ đồng (+54%), thì lợi nhuận thực tế lại không ghi nhận mức tăng trưởng tương ứng:</p>
+  <ul>
+    <li><strong>Lợi nhuận sau thuế lũy kế 9 tháng năm 2026:</strong> Đạt <strong>388 tỷ đồng</strong>, sụt giảm mạnh so với mức lợi nhuận cùng kỳ năm 2025 (khi thị trường chứng khoán trong chu kỳ tăng mạnh).</li>
+    <li><strong>Lợi nhuận Quý 3/2026 riêng lẻ:</strong> Đạt <strong>174 tỷ đồng</strong>.</li>
+    <li><strong>Thu nhập trên mỗi cổ phần (EPS lũy kế 9 tháng):</strong> Chỉ đạt khoảng <strong>158 đồng/cổ phiếu</strong> do chịu áp lực pha loãng cơ học từ việc tăng vốn điều lệ lên 2,45 tỷ cổ phiếu.</li>
+  </ul>
+
+  <div class="data-highlight">
+    <h4>Bản Chất Hiện Tượng Pha Loãng Cơ Học</h4>
+    <ul>
+      <li>Khi công ty phát hành tăng vốn tỷ lệ 1:1, số lượng cổ phiếu lưu hành tăng gấp đôi. Nếu nguồn vốn mới huy động chưa kịp giải ngân sinh lời hoặc thị trường chứng khoán đi vào pha tích lũy/đi ngang, mẫu số của phương trình $EPS = LNST / Số_lượng_CP_lưu_hành$ tăng gấp 2 lần trong khi tử số không tăng tương ứng.</li>
+      <li>Tại thị giá 13.150 đồng/cp, hệ số giá trên giá trị sổ sách (P/B) của VIX giao dịch ở mức khoảng <strong>0,98 lần</strong> (vốn chủ sở hữu 32.866 tỷ / vốn hóa khoảng 32.200 tỷ). Mức P/B dưới 1.0 lần phản ánh việc thị trường chiết khấu rủi ro biến động danh mục tài sản tự doanh của doanh nghiệp.</li>
+    </ul>
+  </div>
+
+  <h2>6. Phân Định Giữa Sự Kiện Xác Minh Và Kênh Tác Động Rủi Ro (Evidence Gate)</h2>
+  <p>Tuân thủ tiêu chuẩn khoa học thực chứng, bài phân tích phân định rõ 3 tầng thông tin đối với các rủi ro xoay quanh Chứng khoán VIX:</p>
+
+  <h3>6.1. Tầng 1: Sự Kiện Đã Được Xác Minh (Verified Facts)</h3>
+  <ul>
+    <li>Vốn điều lệ đạt trên 24.502 tỷ đồng theo hồ sơ UBCKNN và HOSE; tổng tài sản 39.860 tỷ đồng.</li>
+    <li>FVTPL đạt 23.099 tỷ đồng (chiếm 58% tổng tài sản, 70,3% vốn chủ sở hữu); cho vay margin đạt 12.416 tỷ đồng.</li>
+    <li>Danh mục tập trung vào các mã cổ phiếu ngân hàng (VPB, EIB) và hạ tầng điện (GEE, GEX).</li>
+    <li>LNST 9 tháng đạt 388 tỷ đồng; đòn bẩy nợ vay D/E duy trì ở mức an toàn 0,21x.</li>
+  </ul>
+
+  <h3>6.2. Tầng 2: Kênh Tác Động Giả Thuyết (Hypothesized Channels)</h3>
+  <ul>
+    <li><em>Rủi ro thanh khoản chéo (Cross-liquidity risk):</em> Nếu các cổ phiếu nằm trong danh mục tự doanh gặp biến cố bất lợi hoặc bị bán giải chấp, VIX có thể chịu áp lực trích lập dự phòng hoặc giảm giá trị tài sản ròng.</li>
+    <li><em>Rủi ro vòng lặp tăng vốn:</em> Việc liên tục tăng vốn thông qua phát hành quyền mua cho cổ đông hiện hữu đòi hỏi dòng tiền hấp thụ từ thị trường; nếu hiệu quả sinh lời trên vốn chủ (ROE) duy trì ở mức một con số (dưới 5%–6%), áp lực đòi hỏi cổ tức tiền mặt từ nhà đầu tư cá nhân sẽ gia tăng.</li>
+  </ul>
+
+  <h3>6.3. Tầng 3: Bằng Chứng Thực Nghiệm Hiện Có (Empirical Proof)</h3>
+  <ul>
+    <li>Hiện tại, <strong>chưa có bằng chứng số liệu nào</strong> cho thấy VIX bị mất khả năng thanh toán hay gặp rủi ro vỡ nợ, nhờ tỷ lệ đòn bẩy vay nợ ngân hàng rất thấp (D/E = 0,21x) và tài sản chủ yếu hình thành từ vốn chủ sở hữu.</li>
+    <li>Biến động thị giá của VIX hoàn toàn tương quan với chu kỳ thanh khoản thị trường và kỳ vọng lợi nhuận đánh giá lại danh mục FVTPL, chứ không phản ánh sự suy giảm năng lực cung cấp dịch vụ margin hay môi giới.</li>
+  </ul>
+
+  <h2>7. Kết Luận Thực Chứng</h2>
+  <p>Công ty Cổ phần Chứng khoán VIX là một định chế tài chính đặc thù trên thị trường chứng khoán Việt Nam: Sở hữu quy mô vốn điều lệ thuộc nhóm dẫn đầu ngành nhưng vận hành với mô hình tập trung cao độ vào tài sản tự doanh (FVTPL chiếm 70% vốn chủ sở hữu). Mô hình này tạo ra lợi thế đòn bẩy lợi nhuận rất lớn trong các pha thị trường tăng trưởng bùng nổ (Bull-market), nhưng đồng thời mang lại độ nhạy rủi ro cao khi thị trường chung điều chỉnh.</p>
+
+  <p>Với mức định giá P/B hiện tại xấp xỉ 0,98x và đòn bẩy nợ vay an toàn, VIX không đối mặt với rủi ro đứt gãy thanh khoản tài chính. Tuy nhiên, thách thức trọng tâm của doanh nghiệp trong giai đoạn 2026–2027 nằm ở bài toán <strong>tối ưu hóa hiệu quả sử dụng nguồn vốn 24.500 tỷ đồng</strong>: Cân bằng tỷ trọng giữa tự doanh và mở rộng thị phần dịch vụ cho vay margin ổn định để bảo vệ EPS trước áp lực pha loãng của hơn 2,45 tỷ cổ phiếu lưu hành.</p>
+
+  <div class="ref-list">
+    <h4>Nguồn Dữ Liệu & Tài Liệu Kiểm Chứng Thực Chứng</h4>
+    <ol>
+      <li><strong>Công ty Cổ phần Chứng khoán VIX (VIX):</strong> Báo cáo tài chính Quý 3 năm 2026 (công bố ngày 20/10/2026 tại vixs.vn) và Báo cáo thường niên kiểm toán năm 2025.</li>
+      <li><strong>Sở Giao dịch Chứng khoán TP.HCM (HOSE):</strong> Thông báo thay đổi số lượng cổ phiếu lưu hành và dữ liệu giao dịch khớp lệnh mã VIX năm 2025–2026.</li>
+      <li><strong>Ủy ban Chứng khoán Nhà nước (UBCKNN):</strong> Giấy phép điều chỉnh vốn điều lệ và tài liệu Đại hội đồng cổ đông thường niên 2026.</li>
+      <li><strong>Hệ thống Dữ liệu Tài chính CafeF & FiinPro:</strong> Thống kê phân rã cơ cấu tài sản FVTPL, dư nợ margin và chỉ số định giá P/B của nhóm công ty chứng khoán.</li>
+    </ol>
+  </div>
+
+  <div class="footer-sig">
+    <p>© 2026 <strong>SOI SỐ</strong> (soisovn.substack.com) · Bản quyền nội dung thuộc về tác giả <strong>Duy Lê</strong>.</p>
+    <p>Ấn phẩm phân tích dữ liệu độc lập tuân thủ nghiêm ngặt Tiêu chuẩn Khoa học Thực chứng (Empirical Scientific Standard).</p>
+  </div>
+</div>
+
+</body>
+</html>
