@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SOI SỐ</title>
+    <link>https://soisovn.substack.com</link>
+    <description>Nền tảng Phân tích Dữ liệu &amp; Địa kinh tế Độc lập. Mỗi ngày một ấn phẩm chuyên sâu 25 phút đọc.</description>
+    <language>vi</language>
+    <lastBuildDate>Fri, 06 Nov 2026 09:14:47 +0700</lastBuildDate>
+    <atom:link href="https://soisoweb.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
+    
+    <item>
+      <title>Cuộc đua trợ cấp chip tại Đông Nam Á: Malaysia và Singapore hút hàng chục tỷ USD, dư địa thực tế của Việt Nam nằm ở đâu?</title>
+      <link>https://soisoweb.vercel.app/p/cuoc-dua-tro-cap-chip-dong-nam-a</link>
+      <guid>https://soisoweb.vercel.app/p/cuoc-dua-tro-cap-chip-dong-nam-a</guid>
+      <pubDate>Thu, 06 Nov 2026 06:30:00 +0700</pubDate>
+      <description>Giải mã 45 tỷ USD FDI bán dẫn ASEAN, bẫy tài khóa khi chạy đua xây dựng Fab 15 tỷ USD, rào cản kỹ thuật Six-Nines (99.9999%) và chiến lược khả thi nhất cho Việt Nam trong mảng Fabless IC Design &amp; Advanced Packaging.</description>
+    </item>
+
+    <item>
+      <title>Lập trình viên Ấn Độ giảm giá 20% nhờ AI: Lợi thế nhân công giá rẻ của công nghệ Việt Nam còn trụ được bao lâu?</title>
+      <link>https://soisoweb.vercel.app/p/lap-trinh-vien-an-do-giam-gia-ai</link>
+      <guid>https://soisoweb.vercel.app/p/lap-trinh-vien-an-do-giam-gia-ai</guid>
+      <pubDate>Wed, 05 Nov 2026 23:25:00 +0700</pubDate>
+      <description>Đối chiếu số liệu đơn giá từ Accelerance 2025, NASSCOM, thực nghiệm GitHub Copilot của Microsoft Research và nghiên cứu của METR về nghịch lý năng suất lập trình thực tế.</description>
+    </item>
+  </channel>
+</rss>
