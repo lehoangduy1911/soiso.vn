@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOI SỐ · Nền tảng Phân tích Dữ liệu & Địa kinh tế Độc lập</title>
+  <meta name="description" content="Nền tảng phân tích độc lập chuyên sâu về công nghệ, địa kinh tế và thị trường lao động số. Tác giả: Duy Lê.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #0f172a;
+      --card-border: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-blue: #2563eb;
+      --accent-red: #f87171;
+      --accent-green: #34d399;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-serif: "Lora", "Merriweather", Georgia, serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    header {
+      border-bottom: 1px solid var(--card-border);
+      padding: 24px 0;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-logo {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-logo span {
+      background: linear-gradient(135deg, #38bdf8, #2563eb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .brand-tagline {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      margin-left: 20px;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--accent); }
+    
+    .hero-banner {
+      padding: 48px 0 32px 0;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .hero-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .hero-title {
+      font-size: 38px;
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+    .hero-desc {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 760px;
+      line-height: 1.6;
+    }
+
+    .article-section {
+      padding: 40px 0;
+    }
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 12px;
+    }
+
+    .featured-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 32px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .featured-card:hover {
+      border-color: #334155;
+      transform: translateY(-2px);
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .meta-tag {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .card-title {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 14px;
+    }
+    .card-title a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .card-title a:hover { color: var(--accent); }
+    .card-excerpt {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+      padding: 16px;
+      background: #090d16;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+    }
+    .metric-item-num {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .metric-item-lbl {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .btn-read {
+      display: inline-block;
+      background: var(--accent-blue);
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .btn-read:hover { background: #1d4ed8; }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .sub-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .sub-card:hover { border-color: #334155; }
+    .sub-card-title {
+      font-size: 19px;
+      font-weight: 700;
+      margin: 8px 0;
+    }
+    .sub-card-title a { color: #ffffff; text-decoration: none; }
+    .sub-card-title a:hover { color: var(--accent); }
+
+    .author-box {
+      background: linear-gradient(180deg, var(--card-bg), #090d16);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 48px 0;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .author-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+      border: 2px solid var(--accent);
+    }
+    .author-info h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .author-info p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 32px 0 48px 0;
+      text-align: center;
+      font-size: 13px;
+      color: #64748b;
+    }
+    footer a { color: var(--text-muted); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <div>
+        <a href="/" class="brand-logo">📊 SOI SỐ <span>.VN</span></a>
+        <div class="brand-tagline">Nền tảng Phân tích Dữ liệu & Địa kinh tế Độc lập</div>
+      </div>
+      <nav>
+        <a href="#articles">Ấn phẩm</a>
+        <a href="#about">Về tác giả</a>
+        <a href="https://t.me/pmiacppowerautomate_bot" target="_blank">Kênh Telegram</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="hero-banner">
+      <div class="hero-label">Chuẩn mực nghiên cứu thực chứng</div>
+      <h1 class="hero-title">Đào sâu bản chất số liệu.<br>Đối chiếu thực nghiệm toàn cầu.</h1>
+      <p class="hero-desc">Mỗi ngày một ấn phẩm phân tích chuyên sâu 25 phút đọc về công nghệ, bán dẫn và chuỗi cung ứng số. Dựa trên số liệu kiểm toán, loại bỏ hoàn toàn ngôn từ phóng đại.</p>
+    </div>
+
+    <section id="articles" class="article-section">
+      <div class="section-title">Ấn phẩm mới nhất</div>
+
+      <!-- Featured: Issue 003 -->
+      <article class="featured-card">
+        <div class="card-meta">
+          <span class="meta-tag">SOI SỐ #003</span>
+          <span>BÁN DẪN & ĐỊA KINH TẾ</span>
+          <span>•</span>
+          <span>⏱ 25 phút đọc (~5.100 từ)</span>
+          <span>•</span>
+          <span>06/11/2026</span>
+        </div>
+        <h2 class="card-title">
+          <a href="/p/cuoc-dua-tro-cap-chip-dong-nam-a">Cuộc đua trợ cấp chip tại Đông Nam Á: Malaysia và Singapore hút hàng chục tỷ USD, dư địa thực tế của Việt Nam nằm ở đâu?</a>
+        </h2>
+        <p class="card-excerpt">
+          Giải mã 45 tỷ USD FDI bán dẫn ASEAN, bẫy tài khóa khi chạy đua xây dựng Fab 15 tỷ USD, rào cản kỹ thuật Six-Nines (99.9999%) và chiến lược khả thi nhất cho Việt Nam trong mảng Fabless IC Design & Advanced Packaging.
+        </p>
+
+        <div class="metrics-row">
+          <div>
+            <div class="metric-item-num">32 TỶ $</div>
+            <div class="metric-item-lbl">FDI Bán dẫn Malaysia (13% ATP toàn cầu)</div>
+          </div>
+          <div>
+            <div class="metric-item-num" style="color: var(--accent-red);">10-15 TỶ $</div>
+            <div class="metric-item-lbl">Capex xây 1 Fab 300mm (Khấu hao 5-8M$/ngày)</div>
+          </div>
+          <div>
+            <div class="metric-item-num" style="color: var(--accent-green);">35-50k $</div>
+            <div class="metric-item-lbl">Doanh thu/kỹ sư Fabless IC Design</div>
+          </div>
+        </div>
+
+        <a href="/p/cuoc-dua-tro-cap-chip-dong-nam-a" class="btn-read">Đọc toàn văn bài phân tích →</a>
+      </article>
+
+      <!-- Previous: Issue 002 -->
+      <div class="articles-grid">
+        <article class="sub-card">
+          <div class="card-meta">
+            <span class="meta-tag">SOI SỐ #002</span>
+            <span>LAO ĐỘNG SỐ</span>
+            <span>•</span>
+            <span>⏱ 25 phút đọc (~5.200 từ)</span>
+            <span>•</span>
+            <span>05/11/2026</span>
+          </div>
+          <h3 class="sub-card-title">
+            <a href="/p/lap-trinh-vien-an-do-giam-gia-ai">Lập trình viên Ấn Độ giảm giá 20% nhờ AI: Lợi thế nhân công giá rẻ của công nghệ Việt Nam còn trụ được bao lâu?</a>
+          </h3>
+          <p class="card-excerpt" style="font-size: 14px;">
+            Đối chiếu số liệu đơn giá từ Accelerance 2025, NASSCOM, thực nghiệm GitHub Copilot của Microsoft Research và nghiên cứu của METR về nghịch lý năng suất lập trình thực tế.
+          </p>
+          <a href="/p/lap-trinh-vien-an-do-giam-gia-ai" style="color: var(--accent); font-size: 14px; font-weight: 600; text-decoration: none;">Đọc bài viết →</a>
+        </article>
+
+        <!-- Upcoming queue -->
+        <article class="sub-card" style="opacity: 0.75; border-style: dashed;">
+          <div class="card-meta">
+            <span class="meta-tag" style="background: rgba(148, 163, 184, 0.1); color: #94a3b8; border-color: #334155;">SẮP XUẤT BẢN · #004</span>
+            <span>TRÍ TUỆ NHÂN TẠO</span>
+            <span>•</span>
+            <span>07/11/2026</span>
+          </div>
+          <h3 class="sub-card-title" style="color: #cbd5e1;">
+            Bức tường Dữ liệu 2026: Khi kho tri thức loài người cạn kiệt, các phòng thí nghiệm AI giải bài toán Synthetic Data ra sao?
+          </h3>
+          <p class="card-excerpt" style="font-size: 14px;">
+            Nghiên cứu của Epoch AI về tốc độ tiêu thụ token dữ liệu chất lượng cao và nguy cơ suy biến mô hình (Model Collapse).
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <div id="about" class="author-box">
+      <div class="author-avatar">👨‍💻</div>
+      <div class="author-info">
+        <h3>Tác giả: Duy Lê</h3>
+        <p>Nhà phân tích dữ liệu độc lập và nghiên cứu công nghệ. Chủ bút ấn bản <strong>SOI SỐ</strong> (soiso.vn). Tập trung nghiên cứu thực chứng về kinh tế số, địa chính trị bán dẫn và tác động cơ cấu của AI đến lực lượng lao động.</p>
+        <p style="margin-top: 8px;"><a href="mailto:lehoangduy1911@gmail.com" style="color: var(--accent); text-decoration: none;">lehoangduy1911@gmail.com</a></p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 <strong>SOI SỐ</strong> · Nền tảng phân tích độc lập (soiso.vn). Mọi trích dẫn vui lòng ghi rõ nguồn.</p>
+      <p style="margin-top: 6px;">Được thiết kế theo tiêu chuẩn khoa học thực chứng (Empirical Scientific Standard).</p>
+    </div>
+  </footer>
+
+</body>
+</html>
