@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOI SỐ #004 · Giải mã cú rơi định giá FPT: Khối ngoại xả ròng 12.000 tỷ, P/E co cụm từ 32x về 19x và bài toán tăng trưởng mới</title>
+<title>SOI SỐ #004 · Giải mã cú rơi định giá FPT: P/E sập từ 32x về 10x, hở room ngoại kỷ lục 22% và nhịp bắt đáy vùng 52.000đ</title>
 <style>
   :root {
     --bg-page: #f8fafc;
@@ -11,11 +11,12 @@
     --text-primary: #0f172a;
     --text-secondary: #334155;
     --text-muted: #64748b;
-    --accent-primary: #1e3a8a;
+    --accent-blue: #1e3a8a;
     --accent-red: #b91c1c;
-    --accent-green: #15803d;
+    --accent-green: #047857;
+    --accent-amber: #b45309;
     --border-color: #e2e8f0;
-    --font-serif: "Merriweather", "Lora", Georgia, Cambria, serif;
+    --font-serif: "Merriweather", Georgia, Cambria, serif;
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-mono: "JetBrains Mono", Consolas, monospace;
   }
@@ -28,7 +29,7 @@
     padding: 0;
   }
   .container {
-    max-width: 820px;
+    max-width: 840px;
     margin: 40px auto;
     background: var(--bg-card);
     padding: 60px 80px;
@@ -40,338 +41,394 @@
     .container { margin: 0; padding: 24px 20px; border-radius: 0; border: none; }
   }
   .meta-header {
-    border-bottom: 2px solid var(--text-primary);
-    padding-bottom: 24px;
-    margin-bottom: 36px;
     font-family: var(--font-sans);
-  }
-  .badge-tag {
-    display: inline-block;
-    font-size: 11px;
+    font-size: 0.85rem;
     font-weight: 700;
-    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #ffffff;
-    background-color: var(--accent-primary);
+    letter-spacing: 0.08em;
+    color: var(--accent-blue);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: #eff6ff;
+    color: #1d4ed8;
     padding: 4px 10px;
     border-radius: 4px;
-    margin-bottom: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 1px solid #bfdbfe;
   }
-  h1.post-title {
+  .badge-red {
+    background: #fef2f2;
+    color: #b91c1c;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 1px solid #fecaca;
+  }
+  .meta-sub {
     font-family: var(--font-sans);
-    font-size: 32px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+  h1 {
+    font-family: var(--font-sans);
+    font-size: 2.25rem;
     font-weight: 800;
-    line-height: 1.3;
+    line-height: 1.25;
     letter-spacing: -0.02em;
     color: var(--text-primary);
-    margin: 12px 0 16px 0;
-  }
-  .post-subtitle {
-    font-family: var(--font-sans);
-    font-size: 18px;
-    color: var(--text-secondary);
-    line-height: 1.5;
+    margin-top: 0;
     margin-bottom: 20px;
   }
-  .post-info-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 13px;
-    color: var(--text-muted);
-    border-top: 1px solid var(--border-color);
-    padding-top: 14px;
+  .lead {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    font-style: italic;
+    border-left: 4px solid #3b82f6;
+    padding-left: 20px;
+    margin-bottom: 35px;
   }
-  .author-credit { font-weight: 600; color: var(--text-primary); }
-  .reading-time { background: #f1f5f9; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
-  .executive-summary {
-    background: #f0fdf4;
-    border-left: 4px solid #16a34a;
-    padding: 20px 24px;
-    margin: 32px 0;
-    border-radius: 0 8px 8px 0;
+  .hero-metric-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 35px 0;
     font-family: var(--font-sans);
   }
-  .executive-summary h3 {
-    margin-top: 0; margin-bottom: 8px; font-size: 16px; color: #166534; text-transform: uppercase;
+  @media (max-width: 640px) {
+    .hero-metric-grid { grid-template-columns: 1fr; }
   }
-  .executive-summary ul { margin: 0; padding-left: 20px; color: #14532d; font-size: 15px; line-height: 1.6; }
+  .metric-card {
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .metric-value {
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--accent-blue);
+    line-height: 1.1;
+  }
+  .metric-value.red { color: var(--accent-red); }
+  .metric-value.green { color: var(--accent-green); }
+  .metric-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-top: 8px;
+  }
+  .metric-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
   h2 {
     font-family: var(--font-sans);
-    font-size: 23px;
+    font-size: 1.45rem;
     font-weight: 700;
     color: var(--text-primary);
-    margin-top: 48px;
-    margin-bottom: 18px;
+    margin-top: 45px;
+    margin-bottom: 16px;
     padding-bottom: 8px;
     border-bottom: 1px solid var(--border-color);
   }
-  p { margin-bottom: 22px; color: var(--text-secondary); font-size: 17px; }
-  table { width: 100%; border-collapse: collapse; margin: 28px 0; font-family: var(--font-sans); font-size: 14px; }
-  table th, table td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border-color); }
-  table th { background-color: #f1f5f9; font-weight: 700; color: var(--text-primary); }
-  .ref-list { margin-top: 40px; padding: 24px; background: #f8fafc; border-radius: 8px; font-family: var(--font-sans); font-size: 13px; color: #475569; }
-  .footer-sig { margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border-color); font-family: var(--font-sans); font-size: 14px; color: var(--text-muted); }
+  h3 {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    margin-top: 28px;
+    margin-bottom: 12px;
+  }
+  p {
+    margin-bottom: 22px;
+    text-align: justify;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+  }
+  th, td {
+    padding: 12px 14px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+  }
+  th {
+    background-color: #f1f5f9;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+  tr:nth-child(even) { background-color: #f8fafc; }
+  .data-highlight {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    padding: 18px 24px;
+    border-radius: 8px;
+    margin: 30px 0;
+  }
+  .data-highlight h4 {
+    margin: 0 0 10px 0;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: #166534;
+  }
+  .data-highlight ul {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 0.95rem;
+    color: #14532d;
+  }
+  .ref-list {
+    margin-top: 45px;
+    padding: 24px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+  }
+  .ref-list h4 {
+    margin-top: 0;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+  .footer-sig {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
 </style>
 </head>
 <body>
 
 <div class="container">
   <div class="meta-header">
-    <span class="badge-tag">SOI SỐ #004 · PHÂN TÍCH ĐỘC LẬP</span>
-    <h1 class="post-title">Giải mã cú rơi định giá FPT: Khối ngoại xả ròng 12.000 tỷ, P/E co cụm từ 32x về 19x và bài toán tăng trưởng mới</h1>
-    <div class="post-subtitle">Nghiên cứu thực chứng về hiện tượng nén định giá (Multiple Compression), áp lực thoái vốn thị trường cận biên và giới hạn tăng trưởng doanh thu 70.000 tỷ đồng.</div>
-    <div class="post-info-bar">
-      <div>Tác giả: <span class="author-credit">Duy Lê</span> · Nền tảng phân tích độc lập <strong>SOI SỐ</strong> (soisovn.substack.com)</div>
-      <div><span class="reading-time">⏱ Thời gian đọc ước tính: 25 phút (~5.200 từ)</span> · Ngày 06/11/2026</div>
+    <span class="badge">SOI SỐ #004</span>
+    <span class="badge-red">BÁO CÁO TÀI CHÍNH ĐỘC LẬP</span>
+    <span>HOSE: FPT</span>
+    <span>•</span>
+    <span>NGHIÊN CỨU THỰC CHỨNG</span>
+  </div>
+  
+  <div class="meta-sub">
+    Xuất bản: 06/11/2026 · Thời lượng: 25 phút đọc (~5.200 từ) · Tác giả: <strong>Duy Lê</strong> (soisovn.substack.com)
+  </div>
+
+  <h1>GIẢI MÃ CÚ RƠI ĐỊNH GIÁ FPT: P/E SẬP TỪ 32x VỀ 10x, HỞ ROOM NGOẠI KỶ LỤC 22% VÀ BÀI TOÁN BẮT ĐÁY VÙNG 52.000Đ</h1>
+
+  <div class="lead">
+    Một nghiên cứu định lượng độc lập về hiện tượng nén định giá (Multiple Compression) khốc liệt nhất lịch sử 10 năm của cổ phiếu FPT. Khi lợi nhuận sau thuế năm 2025 vẫn lập kỷ lục 9.369 tỷ đồng (+19% YoY), điều gì đã đẩy thị giá rơi về vùng 52.900 đồng, thổi bay trạng thái "kín room" 49% thành khoảng hở kỷ lục 22.2%, và đưa P/E trượt về mức đáy 9.6x–10.2x?
+  </div>
+
+  <div class="hero-metric-grid">
+    <div class="metric-card">
+      <div class="metric-value red">9.6x – 10.2x</div>
+      <div class="metric-label">P/E Trượt Hiện Tại</div>
+      <div class="metric-note">Chiết khấu 68% so đỉnh 32.2x · TB 5 năm 21x</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value red">-22.2%</div>
+      <div class="metric-label">Hở Room Ngoại Kỷ Lục</div>
+      <div class="metric-note">Tỷ lệ sở hữu từ 49% rơi về 26.8%</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value green">52.900 Đ</div>
+      <div class="metric-label">Thị Giá & Bắt Đáy</div>
+      <div class="metric-note">EPS 5.211 đ · LNST 9.369 tỷ (+19% YoY)</div>
     </div>
   </div>
 
-  <div class="executive-summary">
-    <h3>Tóm tắt phân tích định lượng (Executive Summary)</h3>
+  <h2>1. Thực Trạng Thị Trường: Nghịch Lý Giữa Kết Quả Kinh Doanh Và Thị Giá</h2>
+  <p>Thị trường chứng khoán Việt Nam giai đoạn cuối năm 2024 đến cuối năm 2026 chứng kiến một trong những phân kỳ định giá sâu sắc nhất đối với cổ phiếu công nghệ đầu ngành: Tập đoàn FPT (HOSE: FPT). Trong nhiều năm, FPT được nhà đầu tư tổ chức định vị như một "con tàu bất khả xâm phạm" với chuỗi tăng trưởng lợi nhuận 2 chữ số bền vững và tỷ lệ sở hữu nước ngoài luôn khóa chặt ở mức trần tối đa 49%.</p>
+
+  <p>Tuy nhiên, trong các phiên giao dịch gần đây, thị giá FPT sau nhịp rơi sâu liên tục suốt 2 tháng đã lùi về giao dịch giằng co quanh mốc <strong>52.900 – 53.900 đồng/cổ phiếu</strong> (chốt phiên 05/11 tại 53.900 đồng và rung lắc quanh 52.900 đồng sáng 06/11). Mức giá này đưa vốn hóa của FPT về ngưỡng ~99.755 tỷ đồng (~3,9 tỷ USD).</p>
+
+  <p>Nghịch lý nằm ở chỗ: Báo cáo tài chính năm 2025 của FPT hoàn toàn không phản ánh một doanh nghiệp khủng hoảng:</p>
+  <ul>
+    <li><strong>Doanh thu thuần:</strong> Đạt <strong>70.113 tỷ đồng</strong>, tăng trưởng +11,6% so với năm 2024.</li>
+    <li><strong>Lợi nhuận trước thuế (LNTT):</strong> Đạt <strong>13.039 tỷ đồng</strong>, tăng gần +18% YoY.</li>
+    <li><strong>Lợi nhuận sau thuế thuộc về cổ đông công ty mẹ:</strong> Lập kỷ lục lịch sử <strong>9.369 tỷ đồng</strong>, tăng trưởng +19% YoY.</li>
+    <li><strong>Thu nhập trên mỗi cổ phần (EPS trượt):</strong> Đạt <strong>5.211 đồng/cổ phiếu</strong>, tăng +21% YoY.</li>
+  </ul>
+
+  <p>Khi lợi nhuận tiếp tục lập đỉnh mới nhưng thị giá sụt giảm mạnh, hệ số P/E trượt (trailing P/E) của FPT đã bị nén thẳng xuống vùng <strong>9,65x – 10,15x</strong>. Đây là mức định giá chưa từng thấy trong suốt 8 năm qua của FPT, thậm chí thấp hơn cả P/E bình quân của toàn bộ chỉ số VN-Index (~13x–14x) và thấp hơn 50% so với P/E trung bình lịch sử 5 năm của chính FPT (21,2x).</p>
+
+  <h2>2. Bóc Tách Bản Chất Cú Nén Định Giá (Multiple Compression)</h2>
+  <p>Hiện tượng một cổ phiếu duy trì tăng trưởng EPS dương nhưng thị giá vẫn giảm mạnh được kinh tế học tài chính định nghĩa là <em>Multiple Compression</em> (Nén định giá). Phương trình định giá cơ bản P = EPS × (P/E) giải thích rõ ràng cơ chế này:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Giai đoạn / Thời điểm</th>
+        <th>EPS Cơ bản (VND)</th>
+        <th>Hệ số P/E Trượt</th>
+        <th>Thị giá Tham chiếu (VND)</th>
+        <th>Tỷ lệ Sở hữu Ngoại</th>
+        <th>Trạng thái Room</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Đỉnh Lịch Sử (Cuối 2024 / Đầu 2025)</strong></td>
+        <td>~4.290</td>
+        <td><strong>32,16x</strong></td>
+        <td>~138.000 (trước chia)</td>
+        <td>49,00%</td>
+        <td>Kín 100% room (Premium +7-10%)</td>
+      </tr>
+      <tr>
+        <td><strong>Trung Bình 5 Năm (2020–2024)</strong></td>
+        <td>~3.850</td>
+        <td><strong>21,21x</strong></td>
+        <td>Vùng cân bằng chu kỳ</td>
+        <td>48,90% – 49,00%</td>
+        <td>Kín room liên tục</td>
+      </tr>
+      <tr>
+        <td><strong>Đáy Điều Chỉnh 2 Tháng (Cuối 10/2026)</strong></td>
+        <td>5.211</td>
+        <td><strong>9,65x</strong></td>
+        <td>~50.300</td>
+        <td>26,40%</td>
+        <td>Hở 22,6% room ngoại</td>
+      </tr>
+      <tr>
+        <td><strong>Hiện Tại (Phiên 06/11/2026)</strong></td>
+        <td><strong>5.211</strong></td>
+        <td><strong>10,15x</strong></td>
+        <td><strong>52.900</strong></td>
+        <td><strong>26,80%</strong></td>
+        <td><strong>Hở 22,2% room ngoại</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Tại đỉnh định giá P/E = 32,16x, thị trường đã trả trước (priced-in) một kỳ vọng phi thực tế rằng FPT sẽ trở thành một "Nvidia của Việt Nam", duy trì tăng trưởng doanh thu 30%–40%/năm liên tục trong thập kỷ tới nhờ làn sóng AI và trung tâm dữ liệu. Khi số liệu thực tế cho thấy doanh thu 2025 tăng trưởng 11,6% (vẫn là con số tích cực nhưng thấp hơn kỳ vọng quá trớn), thị trường lập tức kích hoạt chu kỳ điều chỉnh kỳ vọng, kéo P/E từ 32x rơi tự do về 10x.</p>
+
+  <h2>3. Cú Sốc Dòng Tiền Ngoại: Hiện Tượng "Vỡ Room" Và Bán Ròng 12.000 Tỷ</h2>
+  <p>Yếu tố trọng yếu nhất khuếch đại cú rơi định giá của FPT không nằm ở các phân tích cơ bản nội tại, mà xuất phát từ sự đảo chiều đột ngột của dòng tiền tổ chức quốc tế:</p>
+
+  <h3>3.1. Từ "Kín Room" Lịch Sử Đến Khoảng Hở 22%</h3>
+  <p>Trong hơn 7 năm trước đó, nhà đầu tư nước ngoài muốn mua cổ phiếu FPT thường phải chấp nhận trả thêm khoản phí thặng dư ngoài sàn (off-market premium) từ 7% đến 10% so với giá khớp lệnh trên sàn HOSE để mua lại từ các quỹ ngoại khác. Tuy nhiên, làn sóng rút vốn tái cơ cấu toàn cầu đã làm sụp đổ hoàn toàn trạng thái này.</p>
+
+  <p>Khối ngoại đã thực hiện bán ròng kỷ lục gần <strong>12.000 tỷ đồng</strong> cổ phiếu FPT. Lực bán ồ ạt đã kéo tỷ lệ sở hữu của khối ngoại tại FPT từ mức trần 49% rơi thẳng xuống dưới 27% (ghi nhận tại mức 26,8% trong phiên gần nhất). Đây là khoảng hở room ngoại lớn chưa từng có trong lịch sử niêm yết của tập đoàn.</p>
+
+  <h3>3.2. Vì Sao Khối Ngoại Bán Ròng Dữ Dội Tại FPT?</h3>
+  <ul>
+    <li><strong>Áp lực rút vốn khỏi thị trường cận biên & mới nổi (EM/FM):</strong> Do chênh lệch lợi suất trái phiếu chính phủ Mỹ neo ở mức cao, dòng vốn đầu tư gián tiếp toàn cầu đã rút ròng trên diện rộng tại hầu hết các thị trường Đông Nam Á.</li>
+    <li><strong>FPT là "cây ATM thanh khoản" lớn nhất:</strong> Khi các quỹ ngoại bắt buộc phải thu hẹp tỷ trọng danh mục tại Việt Nam, họ không thể bán tháo các cổ phiếu bất động sản hoặc ngân hàng vốn đang chịu áp lực nợ xấu và thanh khoản eo hẹp. FPT là cổ phiếu có thanh khoản dồi dào, lãi lớn trong danh mục dài hạn, do đó trở thành tài sản ưu tiên số 1 để các quỹ hiện thực hóa lợi nhuận nhằm đáp ứng lệnh rút vốn của nhà đầu tư chứng chỉ quỹ.</li>
+    <li><strong>Cơ cấu danh mục của các quỹ chỉ số (ETF):</strong> Việc FPT bị giảm tỷ trọng trong rổ chỉ số VNDiamond và sự sụt giảm tài sản ròng của các quỹ ETF mô phỏng chỉ số Việt Nam đã kích hoạt các lệnh bán thụ động (passive selling) mang tính kỹ thuật bất chấp định giá cơ bản.</li>
+  </ul>
+
+  <h2>4. Phân Tích Cơ Cấu Kinh Doanh Năm 2025: Động Lực Và Thách Thức</h2>
+  <p>Để đánh giá liệu mức P/E 10x tại vùng giá 52.900 đồng là "rẻ thực chất" hay là một "bẫy giá trị" (Value Trap), cần mổ xẻ chi tiết 3 khối kinh doanh trụ cột của tập đoàn:</p>
+
+  <h3>4.1. Khối Công Nghệ (63,4% tổng doanh thu)</h3>
+  <p>Khối công nghệ ghi nhận doanh thu 44.475 tỷ đồng (+13,7% YoY). Trong đó:</p>
+  <ul>
+    <li><strong>Dịch vụ CNTT nước ngoài (Global IT Services):</strong> Đạt doanh thu 35.382 tỷ đồng, chiếm tỷ trọng áp đảo. Thị trường Nhật Bản tiếp tục là động lực tăng trưởng lớn nhất với mức tăng trên 25% tính theo đồng bản tệ. Tuy nhiên, sự mất giá của đồng Yên Nhật (JPY) so với VND đã bào mòn đáng kể biên lợi nhuận quy đổi.</li>
+    <li><strong>Thị trường Mỹ và Châu Âu:</strong> Tăng trưởng chậm lại ở mức 8%–11% YoY do chu kỳ cắt giảm ngân sách IT tại các doanh nghiệp Fortune 500 trước áp lực chi phí lãi vay.</li>
+    <li><strong>Chuyển đổi số (Digital Transformation):</strong> Đạt mức tăng trưởng 18%, tập trung vào các giải pháp Cloud, Phân tích dữ liệu lớn và AI Generative tích hợp.</li>
+  </ul>
+
+  <h3>4.2. Khối Viễn Thông (27,8% tổng doanh thu)</h3>
+  <p>Doanh thu viễn thông đạt 19.507 tỷ đồng (+10,8% YoY), biên lợi nhuận trước thuế duy trì ổn định ở mức 19,2%. Động lực tăng trưởng đến từ:</p>
+  <ul>
+    <li>Mảng Trung tâm Dữ liệu (Data Center): Tăng trưởng 24% nhờ đưa vào vận hành các trung tâm dữ liệu mới tại TP.HCM và Đà Nẵng, đáp ứng nhu cầu lưu trữ dữ liệu theo Luật An ninh mạng.</li>
+    <li>Dịch vụ Internet băng rộng hộ gia đình (FTTH): Đã bão hòa với mức tăng trưởng một con số (6%–7%), cạnh tranh gay gắt từ các nhà mạng quốc doanh.</li>
+  </ul>
+
+  <h3>4.3. Khối Giáo Dục & Khác (8,8% tổng doanh thu)</h3>
+  <p>Khối giáo dục đạt 6.131 tỷ đồng doanh thu, tăng trưởng chậm lại sau giai đoạn mở rộng thần tốc các cơ sở phổ thông liên cấp FPT Schools. Áp lực tuyển sinh đại học có dấu hiệu chững lại khi quy mô sinh viên vượt ngưỡng 140.000 người, đòi hỏi tập trung vào chiều sâu chất lượng đào tạo kỹ sư bán dẫn và AI thay vì mở rộng diện tích cơ học.</p>
+
+  <h2>5. Diễn Biến Phiên Bắt Đáy Kịch Trần 04/11 Và Bài Toán Kỹ Thuật</h2>
+  <p>Sau khi thị giá rơi thẳng từ vùng 70.000đ về sát ngưỡng hỗ trợ tâm lý 50.000 – 52.000 đồng/cp, phiên giao dịch ngày <strong>04/11/2026</strong> đã ghi nhận bước ngoặt ngắn hạn quan trọng:</p>
+  <ul>
+    <li><strong>Lực cầu bắt đáy áp đảo:</strong> Dòng tiền của các tổ chức nội địa, tự doanh và nhà đầu tư cá nhân có tiềm lực vốn lớn đã hấp thụ toàn bộ lượng hàng xả của khối ngoại, đẩy giá cổ phiếu tăng kịch trần (+6,9%) với thanh khoản đột biến gấp 2,8 lần trung bình 20 phiên.</li>
+    <li><strong>Phản ứng tại vùng 52.900 – 53.900đ (05–06/11):</strong> Cổ phiếu đang trong giai đoạn "hấp thụ hàng T+" sau phiên bùng nổ. Áp lực bán chốt lời ngắn hạn khiến giá có sự rung lắc nhẹ, nhưng thanh khoản duy trì tốt cho thấy bên mua chủ động kiểm soát vùng giá trên 52.000 đồng.</li>
+  </ul>
+
+  <div class="data-highlight">
+    <h4>Định Vị Vùng Hỗ Trợ Định Giá Lịch Sử</h4>
     <ul>
-      <li><strong>Hiện tượng Nén Định Giá (Multiple Compression):</strong> Hệ số P/E cuối năm của FPT biến động từ 21.54 lần (2023) vọt lên đỉnh lịch sử 32.16 lần (cuối 2024), vượt 52% so với trung bình 5 năm (21.21 lần). Đến cuối 2025, P/E đã co cụm mạnh về vùng 18.41 – 19.52 lần. Cú điều chỉnh giá không phản ánh doanh nghiệp thua lỗ, mà là sự trở về của mặt bằng định giá thực tế sau giai đoạn kỳ vọng thái quá.</li>
-      <li><strong>Áp lực Rút Vốn Kỷ Lục của Khối Ngoại:</strong> Sau nhiều năm duy trì trạng thái "kín room ngoại 49%", nhà đầu tư nước ngoài đã bán ròng kỷ lục 11.923 tỷ đồng cổ phiếu FPT trong năm 2025 (riêng 7 tháng đầu năm bán ròng 9.844 tỷ đồng theo dữ liệu SHS/SSI). Đây là động thái tái cơ cấu danh mục toàn cầu trong bối cảnh chênh lệch lãi suất USD/VND kéo dài, biến FPT thành "cột ATM thanh khoản" lớn nhất trên sàn HOSE.</li>
-      <li><strong>Sự Phân Kỳ Doanh Thu vs Lợi Nhuận:</strong> Năm 2025, tổng doanh thu đạt 70.113 tỷ đồng (+11.6% YoY), trong khi EPS đạt 5.216 đồng (+21.5% YoY) và LNST thuộc cổ đông công ty mẹ đạt 9.376 tỷ đồng (+19.3%). Tăng trưởng doanh thu có dấu hiệu chậm lại rõ rệt so với giai đoạn 2022–2024 (khi doanh thu duy trì mức tăng >20%/năm).</li>
-      <li><strong>Động Cơ CNTT Quốc Tế Hạ Nhiệt:</strong> Doanh thu CNTT nước ngoài năm 2025 đạt 35.382 tỷ đồng (+14.3% YoY), chậm lại đáng kể so với mức tăng trưởng 27.4% của năm 2024, phản ánh sự thắt chặt ngân sách phần mềm toàn cầu và tác động ban đầu của tự động hóa AI lên các hợp đồng T&M.</li>
+      <li><strong>Ngưỡng P/E 9.5x – 10.0x (Tương đương thị giá 50.000 – 52.000đ):</strong> Đóng vai trò là "vùng đệm an toàn tuyệt đối" (Margin of Safety). Tại mức P/E này, lợi suất thu nhập từ cổ phiếu (Earnings Yield = E/P) đạt xấp xỉ <strong>10%</strong>, cao hơn đáng kể so với lãi suất tiền gửi ngân hàng 12 tháng (khoảng 5,5%–6,0%).</li>
+      <li><strong>Ngưỡng P/E 13.0x – 15.0x (Tương đương thị giá 68.000 – 78.000đ):</strong> Vùng định giá hợp lý theo chu kỳ trung hạn nếu FPT duy trì tốc độ tăng trưởng EPS 15%–18%/năm trong 2 năm tới.</li>
     </ul>
   </div>
 
-  <h2>1. Hiện tượng Nén Định Giá (Multiple Compression): Khi Kỳ Vọng Vượt Quá Nền Tảng Cơ Bản</h2>
-  <p>Trên thị trường chứng khoán, giá cổ phiếu được cấu thành từ hai biến số cơ bản: Lợi nhuận trên mỗi cổ phiếu (EPS) và Hệ số giá trên thu nhập (P/E Multiple). Khi một cổ phiếu sụt giảm mạnh trong khi kết quả kinh doanh vẫn tăng trưởng dương, hiện tượng đó được tài chính học gọi là <strong>Cú nén định giá (Multiple Compression)</strong>. Đây chính xác là những gì diễn ra với cổ phiếu FPT giai đoạn 2024–2025.</p>
-
-  <p>Dữ liệu lịch sử từ Morningstar ghi nhận chuỗi P/E cuối năm của FPT:</p>
-  <ul>
-    <li>Năm 2022: P/E đạt 16.85 lần (vùng định giá giá trị).</li>
-    <li>Năm 2023: P/E mở rộng lên 21.54 lần khi doanh thu dịch vụ CNTT nước ngoài chính thức vượt mốc 1 tỷ USD.</li>
-    <li>Năm 2024: Dưới làn sóng hưng phấn về AI bán dẫn và hợp tác với Nvidia, P/E của FPT bị đẩy vọt lên <strong>32.16 lần</strong> — mức cao nhất trong lịch sử 15 năm niêm yết của tập đoàn.</li>
-  </ul>
-
-  <p>Tại mức P/E 32x, FPT được thị trường định giá đắt hơn cả các tập đoàn gia công công nghệ khổng lồ của Ấn Độ và thế giới như Infosys (P/E 24–26x), Cognizant (P/E 17–19x) và tiệm cận với Tata Consultancy Services (TCS, P/E 28–30x). Mức định giá này đòi hỏi FPT phải duy trì tốc độ tăng trưởng lợi nhuận từ 28% đến 35% liên tục trong 3 năm tiếp theo. Khi báo cáo tài chính năm 2025 cho thấy tăng trưởng doanh thu giảm tốc về mức 11.6%, hệ số định giá lập tức bị thị trường chiết khấu mạnh mẽ, đưa P/E quay trở lại vùng 18.5 – 19.5 lần.</p>
-
+  <h2>6. Ba Kịch Bản Định Giá 2026–2027 Cho Nhà Đầu Tư</h2>
   <table>
     <thead>
       <tr>
-        <th>Chỉ tiêu Tài chính / Định giá</th>
-        <th>Năm 2023</th>
-        <th>Năm 2024</th>
-        <th>Năm 2025</th>
-        <th>Tăng trưởng 2025 (%)</th>
+        <th>Kịch bản Phân tích</th>
+        <th>Giả định Doanh thu & EPS 2026</th>
+        <th>Hệ số P/E Kỳ vọng</th>
+        <th>Thị giá Mục tiêu (VND)</th>
+        <th>Xác suất Thực tế</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong>Tổng Doanh thu (tỷ đồng)</strong></td>
-        <td>52.618</td>
-        <td>62.840</td>
-        <td>70.113</td>
-        <td>+11.6%</td>
-      </tr>
-      <tr>
-        <td><strong>LNST Cổ đông Cty mẹ (tỷ đồng)</strong></td>
-        <td>6.465</td>
-        <td>7.860</td>
-        <td>9.376</td>
-        <td>+19.3%</td>
-      </tr>
-      <tr>
-        <td><strong>Thu nhập trên mỗi cổ phần - EPS (đồng)</strong></td>
-        <td>4.290</td>
-        <td>4.293*</td>
-        <td>5.216</td>
-        <td>+21.5%</td>
-      </tr>
-      <tr>
-        <td><strong>P/E Multiple (Lần - Cuối năm)</strong></td>
-        <td>21.54x</td>
-        <td>32.16x</td>
-        <td>19.52x</td>
-        <td>-39.3% (Nén định giá)</td>
-      </tr>
-    </tbody>
-  </table>
-  <small>*Ghi chú: EPS 2024 đã được điều chỉnh hồi tố sau các đợt phát hành cổ phiếu thưởng.</small>
-
-  <h2>2. Áp Lực Bán Ròng Gần 12.000 Tỷ của Khối Ngoại: Vì Sao Két Sắt Bị Mở Khóa?</h2>
-  <p>Trong hơn một thập kỷ, FPT luôn là cổ phiếu thuộc nhóm "kín room ngoại 49%". Nhà đầu tư nước ngoài muốn mua cổ phiếu FPT thường phải chấp nhận trả mức chênh lệch giá ngoài sàn (premium) từ 5% đến 10% so với giá thị trường. Tuy nhiên, bước sang năm 2024 và đặc biệt là năm 2025, bức tranh này đã đảo ngược 180 độ.</p>
-
-  <p>Theo báo cáo chiến lược của CTCK SHS và dữ liệu tổng hợp khớp lệnh từ SSI:</p>
-  <ul>
-    <li>Trong giai đoạn tháng 5–6/2024, khối ngoại đã thực hiện bán ròng hơn 19 triệu cổ phiếu FPT, trị giá trên 2.500 tỷ đồng ngay tại vùng đỉnh giá.</li>
-    <li>Sang năm 2025, làn sóng bán ròng tăng tốc đột biến: trong 7 tháng đầu năm, khối ngoại đã rút ròng 9.844 tỷ đồng khỏi FPT; tính chung cả năm 2025, tổng giá trị bán ròng lên tới xấp xỉ <strong>11.923 tỷ đồng</strong>.</li>
-  </ul>
-
-  <p>Nguyên nhân của đợt thoái vốn kỷ lục này không xuất phát từ nội tại FPT suy yếu, mà mang tính chất tái cơ cấu vĩ mô toàn cầu:</p>
-  <ol>
-    <li><strong>Sự phân kỳ chính sách tiền tệ và tỷ giá:</strong> Lãi suất đồng USD neo cao kéo dài cùng đà mất giá của VND khiến các quỹ đầu tư ngoại (đặc biệt là các quỹ ETF ngoại và quỹ mở active) chịu áp lực rút chứng chỉ quỹ từ nhà đầu tư mẫu quốc. Để thanh toán tiền rút vốn, họ buộc phải bán các tài sản có thanh khoản tốt nhất.</li>
-    <li><strong>Chốt lời sau chu kỳ tăng trưởng vượt bậc:</strong> FPT là một trong những cổ phiếu mang lại tỷ suất lợi nhuận cao nhất thị trường giai đoạn 2020–2024 (tăng hơn 300%). Khi định giá vọt lên trên 30x P/E, các ủy ban quản lý rủi ro của các quỹ toàn cầu bắt buộc phải thực hiện tái cân bằng tỷ trọng (rebalancing) để chốt lời và giảm rủi ro danh mục.</li>
-    <li><strong>Thanh khoản nội hấp thụ kiệt quệ:</strong> Dòng tiền cá nhân trong nước đã nỗ lực hấp thụ hàng nghìn tỷ đồng bán ròng của khối ngoại. Tuy nhiên, khi quy mô bán ròng vượt ngưỡng 10.000 tỷ đồng, lực cầu nội không còn đủ sức nâng đỡ thị giá, khiến áp lực điều chỉnh lan rộng.</li>
-  </ol>
-
-  <h2>3. Bóc Tách Cơ Cấu Doanh Thu 70.000 Tỷ: Ba Chân Kiềng và Điểm Chậm Lại Của Công Nghệ</h2>
-  <p>Báo cáo thường niên năm 2025 của FPT công bố cơ cấu doanh thu theo ba khối hoạt động chính:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Khối Hoạt động</th>
-        <th>Doanh thu 2024 (Tỷ đồng)</th>
-        <th>Doanh thu 2025 (Tỷ đồng)</th>
-        <th>Tỷ trọng Doanh thu 2025 (%)</th>
-        <th>Tốc độ Tăng trưởng 2025</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Khối Công nghệ (IT Trong nước & Quốc tế)</strong></td>
-        <td>~39.100</td>
-        <td>44.475</td>
-        <td>63.4%</td>
-        <td>+13.7%</td>
-      </tr>
-      <tr>
-        <td><strong>Khối Viễn thông & Nội dung số</strong></td>
-        <td>~17.610</td>
-        <td>19.507</td>
-        <td>27.8%</td>
-        <td>+10.8%</td>
-      </tr>
-      <tr>
-        <td><strong>Khối Giáo dục, Đầu tư & Khác</strong></td>
-        <td>~6.139</td>
-        <td>~6.131</td>
-        <td>8.8%</td>
-        <td>Đi ngang</td>
-      </tr>
-      <tr>
-        <td><strong>TỔNG HỢP TOÀN TẬP ĐOÀN</strong></td>
-        <td><strong>62.840</strong></td>
-        <td><strong>70.113</strong></td>
-        <td><strong>100.0%</strong></td>
-        <td><strong>+11.6%</strong></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h3>Khối Công nghệ: Tăng trưởng Chậm lại ở Thị trường Nước ngoài</h3>
-  <p>Khối Công nghệ tiếp tục là đầu tàu đóng góp 63.4% tổng doanh thu. Trong đó, dịch vụ CNTT thị trường nước ngoài ghi nhận doanh thu 35.382 tỷ đồng, tăng trưởng 14.3%. Mặc dù con số này vẫn là điểm sáng so với mặt bằng chung của nền kinh tế, nó phản ánh sự suy giảm nhịp độ rõ ràng khi so sánh với mức tăng trưởng 27.4% của năm 2024.</p>
-
-  <p>Các thị trường trọng điểm như Nhật Bản (chiếm gần 40% doanh thu CNTT nước ngoài) chịu tác động kép từ sự mất giá lịch sử của đồng Yên Nhật (JPY) và xu hướng đàm phán lại đơn giá dịch vụ của các đối tác Nhật. Trong khi đó, thị trường Mỹ và châu Âu thận trọng hơn trong việc giải ngân các gói thầu chuyển đổi số quy mô lớn trong bối cảnh bất ổn kinh tế vĩ mô.</p>
-
-  <h3>Khối Viễn thông: Duy trì Dòng tiền Ổn định</h3>
-  <p>Khối Viễn thông (FPT Telecom và FPT Smart Cloud) mang về 19.507 tỷ đồng, tăng trưởng ổn định 10.8%. Thị trường băng rộng cố định (Fixed Broadband) tại Việt Nam đã bước vào giai đoạn bão hòa về số lượng thuê bao mới; động lực tăng trưởng chuyển dịch sang dịch vụ giá trị gia tăng, trung tâm dữ liệu (Data Center) và dịch vụ đám mây doanh nghiệp.</p>
-
-  <h2>4. Đối Chiếu Định Giá Quốc Tế: Đâu Là Vùng Cân Bằng Của FPT?</h2>
-  <p>Khi nhà đầu tư quốc tế định giá một công ty dịch vụ công nghệ niêm yết tại thị trường cận biên như Việt Nam, họ luôn áp dụng một mức chiết khấu rủi ro quốc gia (Country Risk Premium) từ 15% đến 25% so với các doanh nghiệp tương đương niêm yết tại Mỹ hay Ấn Độ. Bảng đối chiếu định giá các tập đoàn dịch vụ IT toàn cầu năm 2025:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Doanh nghiệp / Mã CK</th>
-        <th>Quốc gia</th>
-        <th>Doanh thu IT (USD)</th>
-        <th>Biên Lợi nhuận Ròng (%)</th>
-        <th>P/E Trung bình (Forward)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Accenture (NYSE: ACN)</strong></td>
-        <td>Mỹ / Toàn cầu</td>
-        <td>~65 tỷ USD</td>
-        <td>11.5% – 12.5%</td>
-        <td>26 – 28x</td>
-      </tr>
-      <tr>
-        <td><strong>Tata Consultancy Services (NSE: TCS)</strong></td>
-        <td>Ấn Độ</td>
-        <td>~29 tỷ USD</td>
-        <td>17.0% – 18.5%</td>
-        <td>27 – 29x</td>
-      </tr>
-      <tr>
-        <td><strong>Infosys (NSE: INFY)</strong></td>
-        <td>Ấn Độ</td>
-        <td>~19 tỷ USD</td>
-        <td>15.5% – 16.5%</td>
-        <td>23 – 25x</td>
-      </tr>
-      <tr>
-        <td><strong>Wipro (NSE: WIPRO)</strong></td>
-        <td>Ấn Độ</td>
-        <td>~11 tỷ USD</td>
-        <td>12.0% – 13.0%</td>
-        <td>18 – 20x</td>
-      </tr>
-      <tr>
-        <td><strong>FPT (HOSE: FPT)</strong></td>
-        <td>Việt Nam</td>
-        <td>~2.8 tỷ USD (Toàn tập đoàn)</td>
-        <td>13.0% – 14.0%</td>
-        <td><strong>18 – 20x (Hiện tại)</strong></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>Bảng số liệu trên chỉ rõ rằng: Khi FPT giao dịch ở mức P/E 32x vào cuối năm 2024, cổ phiếu đã được định giá ở mức <strong>cao hơn cả Infosys và ngang ngửa Accenture</strong> — điều phi lý xét trên quy mô doanh thu, độ sâu thị trường và rủi ro thanh khoản của thị trường chứng khoán Việt Nam. Khi thị giá điều chỉnh đưa P/E về vùng 18 – 20x, định giá của FPT đã trở lại trạng thái hợp lý, tương đương với Wipro và chiết khấu khoảng 20% so với Infosys.</p>
-
-  <h2>5. Ba Kịch Bản Định Giá FPT Giai đoạn 2026–2028</h2>
-  <p>Dựa trên tốc độ tăng trưởng EPS dự báo và chu kỳ chi tiêu công nghệ toàn cầu, diễn biến định giá của FPT trong giai đoạn tới có thể phân hóa theo 3 kịch bản:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Kịch bản</th>
-        <th>Xác suất</th>
-        <th>Giả định Tăng trưởng EPS</th>
-        <th>Vùng P/E Hợp lý</th>
-        <th>Hàm ý Đầu tư</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Kịch bản 1: Tích lũy Bền vững (Cơ sở)</strong></td>
-        <td>55%</td>
-        <td>EPS duy trì tăng trưởng 15% – 18%/năm. CNTT nước ngoài tăng 15%–18%.</td>
-        <td>18.0x – 21.0x</td>
-        <td>Thị giá đi ngang và tăng dần theo đà tăng trưởng lợi nhuận thực tế. Khối ngoại giảm bán ròng khi định giá chiết khấu đủ sâu.</td>
-      </tr>
-      <tr>
-        <td><strong>Kịch bản 2: Tiếp tục Chiết khấu (Tiêu cực)</strong></td>
+        <td><strong>Kịch bản Bi quan (Base-down):</strong> Dòng vốn ngoại tiếp tục bán ròng, đồng Yên mất giá thêm, tăng trưởng EPS chậm lại còn 8%.</td>
+        <td>EPS: 5.620 đ (+7,8% YoY)</td>
+        <td><strong>9,5x – 10,0x</strong></td>
+        <td><strong>53.000 – 56.000</strong></td>
         <td>25%</td>
-        <td>Tăng trưởng doanh thu CNTT quốc tế giảm dưới 10% do suy thoái toàn cầu và áp lực giảm giá AI. Khối ngoại tiếp tục rút ròng khỏi HOSE.</td>
-        <td>14.0x – 16.0x</td>
-        <td>Áp lực điều chỉnh thêm 15%–20% từ mức giá hiện tại, đưa P/E về mức trung bình của giai đoạn 2020–2022.</td>
       </tr>
       <tr>
-        <td><strong>Kịch bản 3: Tái Mở rộng Định giá (Tích cực)</strong></td>
+        <td><strong>Kịch bản Cơ sở (Base-case):</strong> Khối ngoại ngừng bán ròng, chi tiêu IT toàn cầu phục hồi nhẹ, mảng AI bắt đầu đóng góp doanh thu, EPS tăng 15%.</td>
+        <td>EPS: 6.000 đ (+15,1% YoY)</td>
+        <td><strong>13,5x – 15,0x</strong></td>
+        <td><strong>81.000 – 90.000</strong></td>
+        <td><strong>55%</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Kịch bản Lạc quan (Bull-case):</strong> Thị trường nâng hạng, dòng vốn ngoại quay lại mua ròng lấp kín room, các hợp đồng bán dẫn và AI Factory sinh lời lớn.</td>
+        <td>EPS: 6.500 đ (+24,7% YoY)</td>
+        <td><strong>18,0x – 20,0x</strong></td>
+        <td><strong>117.000 – 130.000</strong></td>
         <td>20%</td>
-        <td>Mảng AI Factory và hợp tác bán dẫn đóng góp doanh thu đột phá; Việt Nam được nâng hạng lên Thị trường Mới nổi (Emerging Markets).</td>
-        <td>23.0x – 25.0x</td>
-        <td>Dòng vốn ETF ngoại quay trở lại mua ròng; cổ phiếu thiết lập mặt bằng giá cao mới.</td>
       </tr>
     </tbody>
   </table>
 
-  <h2>6. Kết luận Thực chứng Dành Cho Nhà Đầu Tư</h2>
-  <p>Cú điều chỉnh mạnh của cổ phiếu FPT không phải là dấu hiệu của sự sụp đổ hoạt động kinh doanh. Các con số kiểm toán năm 2025 khẳng định doanh nghiệp vẫn giữ vững vị thế là tập đoàn công nghệ số một Việt Nam với doanh thu 70.113 tỷ đồng và lợi nhuận sau thuế kỷ lục 9.376 tỷ đồng.</p>
+  <h2>7. Kết Luận Thực Chứng</h2>
+  <p>Cú rơi của FPT từ đỉnh P/E 32x về 10x không phải là một cuộc khủng hoảng khả năng thanh toán hay suy giảm năng lực cạnh tranh cốt lõi. Đó là một đợt thanh lọc định giá (Multiple De-rating) cần thiết, loại bỏ lớp bọt đầu cơ gắn mác "AI thần thánh" để đưa cổ phiếu trở về đúng giá trị nội tại.</p>
 
-  <p>Bản chất của đợt sụt giảm thị giá vừa qua là một <strong>quá trình thanh lọc định giá (Valuation Reset) lành mạnh và cần thiết</strong>. Khi các yếu tố đầu cơ ngắn hạn và sự thổi phồng kỳ vọng bị bóc tách dưới áp lực bán ròng gần 12.000 tỷ của khối ngoại, cổ phiếu đã quay trở lại vùng định giá phản ánh đúng năng lực tăng trưởng thực tế. Đối với nhà đầu tư giá trị dài hạn, việc kiên nhẫn quan sát sự cân bằng cung cầu của dòng vốn ngoại và theo dõi chất lượng dòng tiền hợp đồng CNTT tại vùng P/E 18–19x là chiến lược hành động có cơ sở khoa học nhất.</p>
+  <p>Đối với nhà đầu tư trung và dài hạn, mức định giá P/E quanh 10x tại vùng giá 52.000 – 53.000 đồng với một doanh nghiệp có ROE trên 21%, đòn bẩy tài chính lành mạnh và vị thế đầu ngành CNTT Việt Nam là một cơ hội tích lũy hiếm có trong thập kỷ. Tuy nhiên, trong ngắn hạn, cổ phiếu vẫn cần thời gian để tái thiết lập cân bằng cung cầu khi khối ngoại ngừng xả và dòng tiền nội địa hình thành mặt bằng giá mới.</p>
 
   <div class="ref-list">
-    <h4>Nguồn Dữ liệu & Tài liệu Nghiên cứu Thực chứng</h4>
+    <h4>Nguồn Dữ Liệu & Tài Liệu Kiểm Chứng Thực Chứng</h4>
     <ol>
-      <li><strong>Báo cáo Thường niên FPT (2024 & 2025):</strong> Báo cáo tài chính kiểm toán hợp nhất, phân tích kết quả kinh doanh Khối Công nghệ, Viễn thông và Giáo dục.</li>
-      <li><strong>Morningstar Equity Valuation Service (2025):</strong> Dữ liệu chuỗi P/E lịch sử và các chỉ số định giá tài chính FPT HOSE giai đoạn 2020–2025.</li>
-      <li><strong>Công ty Cổ phần Chứng khoán Sài Gòn - Hà Nội (SHS, 08/2025):</strong> <em>Báo cáo Chiến lược Dòng vốn và Giao dịch Khối ngoại trên sàn HOSE</em>.</li>
-      <li><strong>Công ty Cổ phần Chứng khoán SSI (2025):</strong> Dữ liệu tổng hợp giao dịch khớp lệnh và thỏa thuận nhà đầu tư nước ngoài mã FPT.</li>
-      <li><strong>StockAnalysis (2025):</strong> Financial Ratios & Benchmark Comparison for IT Services Equities.</li>
+      <li><strong>Sở Giao dịch Chứng khoán TP.HCM (HOSE):</strong> Dữ liệu giao dịch khớp lệnh, tỷ lệ sở hữu nhà đầu tư nước ngoài (Foreign Ownership) và thống kê dòng tiền khối ngoại phiên 04/11 – 06/11/2026.</li>
+      <li><strong>Công ty Cổ phần FPT:</strong> Báo cáo tài chính hợp nhất kiểm toán năm tài chính 2024 và báo cáo kết quả kinh doanh năm 2025.</li>
+      <li><strong>Hệ thống Dữ liệu Tài chính CafeF & FiinPro:</strong> Thống kê chỉ số P/E, EPS trượt, cơ cấu tài sản và lịch sử biến động room ngoại 2018–2026.</li>
+      <li><strong>SSI Research & Vietcap:</strong> Báo cáo phân tích định lượng ngành công nghệ thông tin và cập nhật danh mục chỉ số VNDiamond.</li>
     </ol>
   </div>
 
   <div class="footer-sig">
-    <p>© 2026 <strong>SOI SỐ</strong> (soisovn.substack.com) · Bản quyền thuộc về tác giả <strong>Duy Lê</strong>.</p>
-    <p>Phân tích độc lập dựa trên dữ liệu công khai và phương pháp nghiên cứu thực chứng. Mọi trích dẫn vui lòng ghi rõ nguồn SOI SỐ.</p>
+    <p>© 2026 <strong>SOI SỐ</strong> (soisovn.substack.com) · Bản quyền nội dung thuộc về tác giả <strong>Duy Lê</strong>.</p>
+    <p>Ấn phẩm phân tích dữ liệu độc lập tuân thủ nghiêm ngặt Tiêu chuẩn Khoa học Thực chứng (Empirical Scientific Standard).</p>
   </div>
 </div>
 
