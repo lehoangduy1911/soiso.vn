@@ -5,9 +5,17 @@
     <link>https://soisovn.substack.com</link>
     <description>Nền tảng Phân tích Dữ liệu &amp; Địa kinh tế Độc lập. Mỗi ngày một ấn phẩm chuyên sâu 25 phút đọc.</description>
     <language>vi</language>
-    <lastBuildDate>Fri, 06 Nov 2026 09:14:47 +0700</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2026 07:24:00 +0700</lastBuildDate>
     <atom:link href="https://soisoweb.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
     
+    <item>
+      <title>Bức tường dữ liệu AI: Nguồn văn bản công khai còn đủ đến đâu, và dữ liệu tổng hợp có thể bù vào?</title>
+      <link>https://soisoweb.vercel.app/p/buc-tuong-du-lieu-ai</link>
+      <guid>https://soisoweb.vercel.app/p/buc-tuong-du-lieu-ai</guid>
+      <pubDate>Sat, 07 Nov 2026 07:24:00 +0700</pubDate>
+      <description>Ước tính 300 nghìn tỷ token hiệu dụng, điều kiện dẫn đến model collapse, kết quả nghiên cứu về synthetic data và cách đọc các tỷ lệ phối trộn trong đúng phạm vi.</description>
+    </item>
+
     <item>
       <title>Cuộc đua trợ cấp chip tại Đông Nam Á: Malaysia và Singapore hút hàng chục tỷ USD, dư địa thực tế của Việt Nam nằm ở đâu?</title>
       <link>https://soisoweb.vercel.app/p/cuoc-dua-tro-cap-chip-dong-nam-a</link>

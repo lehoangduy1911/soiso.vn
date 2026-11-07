@@ -1,0 +1,345 @@
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOI SỐ #006 · Bức tường dữ liệu AI: Nguồn văn bản công khai còn đủ đến đâu, và dữ liệu tổng hợp có thể bù vào?</title>
+<style>
+  :root {
+    --bg-page: #f8fafc;
+    --bg-card: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --accent-blue: #1e3a8a;
+    --accent-red: #b91c1c;
+    --accent-green: #047857;
+    --accent-amber: #b45309;
+    --border-color: #e2e8f0;
+    --font-serif: "Merriweather", Georgia, Cambria, serif;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "JetBrains Mono", Consolas, monospace;
+  }
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: var(--font-serif);
+    line-height: 1.85;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 840px;
+    margin: 40px auto;
+    background: var(--bg-card);
+    padding: 60px 80px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+  }
+  @media (max-width: 768px) {
+    .container { margin: 0; padding: 24px 20px; border-radius: 0; border: none; }
+  }
+  .meta-header {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-blue);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: #eff6ff;
+    color: #1d4ed8;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 1px solid #bfdbfe;
+  }
+  .badge-amber {
+    background: #fef3c7;
+    color: #b45309;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 1px solid #fde68a;
+  }
+  .meta-sub {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+  h1 {
+    font-family: var(--font-sans);
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  .lead {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    font-style: italic;
+    border-left: 4px solid #3b82f6;
+    padding-left: 20px;
+    margin-bottom: 35px;
+  }
+  .hero-metric-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 35px 0;
+    font-family: var(--font-sans);
+  }
+  @media (max-width: 640px) {
+    .hero-metric-grid { grid-template-columns: 1fr; }
+  }
+  .metric-card {
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .metric-value {
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--accent-blue);
+    line-height: 1.1;
+  }
+  .metric-value.red { color: var(--accent-red); }
+  .metric-value.amber { color: var(--accent-amber); }
+  .metric-value.green { color: var(--accent-green); }
+  .metric-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-top: 8px;
+  }
+  .metric-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+  h2 {
+    font-family: var(--font-sans);
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-top: 45px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  h3 {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    margin-top: 28px;
+    margin-bottom: 12px;
+  }
+  p {
+    margin-bottom: 22px;
+    text-align: justify;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+  }
+  th, td {
+    padding: 12px 14px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+  }
+  th {
+    background-color: #f1f5f9;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+  tr:nth-child(even) { background-color: #f8fafc; }
+  .data-highlight {
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-left: 4px solid #1e3a8a;
+    padding: 18px 24px;
+    border-radius: 8px;
+    margin: 30px 0;
+  }
+  .data-highlight h4 {
+    margin: 0 0 10px 0;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: #1e3a8a;
+  }
+  .data-highlight ul {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+  .ref-list {
+    margin-top: 45px;
+    padding: 24px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+  }
+  .ref-list h4 {
+    margin-top: 0;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+  .footer-sig {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+</style>
+<meta name="description" content="Ước tính nguồn văn bản hữu ích, bằng chứng về model collapse và các cách dùng dữ liệu tổng hợp có kiểm chứng.">
+<link rel="canonical" href="https://soisoweb.vercel.app/p/buc-tuong-du-lieu-ai">
+<meta property="og:title" content="Bức tường dữ liệu AI: dữ liệu tổng hợp có thể bù vào đến đâu?">
+<meta property="og:description" content="Đọc các ước tính dữ liệu và nghiên cứu synthetic data trong đúng phạm vi của chúng.">
+<meta property="og:type" content="article">
+</head>
+<body>
+<div class="container">
+  <div class="meta-header">
+    <span class="badge">SOI SỐ #006</span>
+    <span class="badge-amber">TRÍ TUỆ NHÂN TẠO & DỮ LIỆU</span>
+    <span>AI & TRAINING CORPORA</span>
+    <span>•</span>
+    <span>NGHIÊN CỨU THỰC CHỨNG</span>
+  </div>
+  <div class="meta-sub">
+    Xuất bản: 07/11/2026 · Thời lượng: khoảng 35 phút đọc (~7.600 từ tách theo khoảng trắng) · Tác giả: <strong>Duy Lê</strong> (soisovn.substack.com)
+  </div>
+
+<h1>BỨC TƯỜNG DỮ LIỆU AI: NGUỒN VĂN BẢN CÔNG KHAI CÒN ĐỦ ĐẾN ĐÂU, VÀ DỮ LIỆU TỔNG HỢP CÓ THỂ BÙ VÀO?</h1>
+
+<div class="lead">Ước tính 300 nghìn tỷ token thường được nhắc như một chiếc đồng hồ đếm ngược cho AI, nhưng đó là một mô hình về nguồn dữ liệu hiệu dụng, không phải phép đếm trực tiếp kho văn bản sạch. Câu hỏi thực tế hơn là dữ liệu mới, có nguồn gốc rõ và phù hợp cho từng mục tiêu còn tăng nhanh đến mức nào; phần dữ liệu tổng hợp bổ sung được gì, và cần giữ các phép kiểm tra nào để tránh lặp lại lỗi của mô hình.</div>
+
+<div class="hero-metric-grid">
+ <div class="metric-card"><div class="metric-value">300T</div><div class="metric-label">Token hiệu dụng</div><div class="metric-note">Ước tính trung tâm Epoch AI 2024; khoảng tin cậy 90% là 100T–1.000T.</div></div>
+ <div class="metric-card"><div class="metric-value red">Có điều kiện</div><div class="metric-label">“Bức tường” dữ liệu</div><div class="metric-note">Mốc cạn phụ thuộc tốc độ mở rộng tập huấn luyện và giả định sử dụng dữ liệu.</div></div>
+ <div class="metric-card"><div class="metric-value green">Không có</div><div class="metric-label">Tỷ lệ tổng hợp phổ quát</div><div class="metric-note">Tỷ lệ hiệu quả trong một nghiên cứu không tự động áp dụng cho mô hình khác.</div></div>
+</div>
+
+<h2>1. “Bức tường dữ liệu” nói về biên nguồn cung hữu ích</h2>
+<p>Trong nhiều năm, mở rộng quy mô mô hình ngôn ngữ lớn thường được mô tả bằng cách tăng đồng thời năng lực tính toán, số tham số và lượng token huấn luyện. Kết quả của Hoffmann và cộng sự về Chinchilla góp phần định lượng một quan hệ quan trọng: trong ngân sách tính toán của thí nghiệm, mô hình 70 tỷ tham số được huấn luyện trên khoảng 1,4 nghìn tỷ token đạt hiệu quả tốt hơn Gopher cùng ngân sách khi dữ liệu huấn luyện được phân bổ khác. Công trình khảo sát hơn 400 mô hình từ 70 triệu đến hơn 16 tỷ tham số, với các tập huấn luyện khoảng 5 tỷ đến 500 tỷ token để suy ra quy tắc scaling theo compute. Quy tắc đó là một kết quả thực nghiệm trong một thiết lập cụ thể, không phải công thức bất biến cho mọi kiến trúc, mọi giai đoạn hậu huấn luyện hay mọi mục tiêu suy luận. Dù vậy, nó cho thấy lượng token là một thành phần trực tiếp của chi phí mở rộng, chứ không chỉ là nguyên liệu phụ. (<a href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/c1e2faff6f588870935f114ebe04a3e5-Abstract.html">Hoffmann và cộng sự, NeurIPS 2022</a>)</p>
+<p>Vì vậy, “bức tường dữ liệu” không nhất thiết có nghĩa là ngày mai không còn trang web để thu thập. Nó chỉ vấn đề khó hơn: liệu các tổ chức có thể tiếp tục tăng lượng dữ liệu mới, chất lượng đủ cao, phù hợp với miền cần học, có nguồn gốc xác định và được phép sử dụng với chi phí chấp nhận được hay không. Một kho dữ liệu có thể rất lớn nhưng phần lớn là bản sao, nội dung rác, nội dung quảng cáo, văn bản ngắn thiếu ngữ cảnh, hoặc dữ liệu không liên quan tới năng lực cần nâng cấp. Một đoạn văn có thể tồn tại công khai mà vẫn không phù hợp để đưa vào tập huấn luyện vì điều kiện sử dụng, quyền riêng tư, giấy phép hoặc lý do bảo mật. Con số “trên mạng có bao nhiêu token” vì thế khác với “một phòng thí nghiệm có bao nhiêu token mới, sạch, đa dạng, có quyền dùng và có thể cải thiện mô hình”. Khi nghe một mốc năm cụ thể, cần hỏi mốc đó áp dụng cho định nghĩa nào.</p>
+<p>Hai đại lượng thường bị gộp làm một là tổng lượng văn bản đã thu thập và nguồn dữ liệu có hiệu quả huấn luyện sau khi điều chỉnh chất lượng, mức lặp lại và cách sử dụng. Cũng cần phân biệt pretraining, nơi mô hình học phân phối ngôn ngữ rộng, với post-training hoặc instruction tuning, nơi một số lượng nhỏ ví dụ được chọn kỹ có thể thay đổi cách mô hình làm theo yêu cầu. Một bộ ví dụ sinh tổng hợp có thể hữu ích để dạy quy trình trả lời một loại câu hỏi mà không bổ sung tương ứng vào nền tri thức phổ quát. Ngược lại, kho văn bản hàng tỷ trang không bảo đảm sẽ dạy tốt một kỹ năng chuyên biệt nếu tác vụ hiếm hoặc nhãn không chính xác. Bài toán không chỉ là “có đủ nhiều hay không”, mà còn là “dữ liệu nào đang thiếu cho mục tiêu nào, và bằng chứng nào cho thấy dữ liệu mới cải thiện mục tiêu ấy”.</p>
+
+<h2>2. 300 nghìn tỷ token là ước tính hiệu dụng, không phải số đếm</h2>
+<p>Phân tích Epoch AI năm 2024 đưa ra ước tính trung tâm khoảng 300 nghìn tỷ token cho nguồn văn bản công khai hiệu dụng do con người tạo ra, với khoảng tin cậy 90% từ 100 nghìn tỷ đến 1.000 nghìn tỷ. Khoảng tin cậy rộng gần một bậc độ lớn phản ánh bất định của dữ liệu đầu vào và giả định mô hình. Từ “hiệu dụng” có ý nghĩa: đây là ước tính về lượng dữ liệu có thể tạo giá trị cho huấn luyện khi xét chất lượng, khả năng lọc và một số cách sử dụng lặp lại, chứ không phải phép đếm từng token đã được lưu trong một thư mục. Không thể suy ra rằng các phòng thí nghiệm đã thu thập hết 300 nghìn tỷ token, rằng toàn bộ số ấy có thể cấp phép, hoặc rằng mọi mô hình đều có thể dùng lại dữ liệu đó với cùng hiệu quả. (<a href="https://epoch.ai/publications/will-we-run-out-of-data-limits-of-llm-scaling-based-on-human-generated-data">Epoch AI, “Will We Run Out of Data?” 2024</a>)</p>
+<p>Trong cùng phân tích, Epoch ước lượng riêng lượng token thô của Common Crawl khoảng 130 nghìn tỷ, với khoảng 95% từ 100 nghìn tỷ đến 260 nghìn tỷ; lượng của web được lập chỉ mục khoảng 510 nghìn tỷ, với khoảng 130 nghìn tỷ đến 2.100 nghìn tỷ; còn tổng web kể cả dữ liệu tư nhân khoảng 3.100 nghìn tỷ, với khoảng 1.900 nghìn tỷ đến 5.200 nghìn tỷ. Những con số này là ước lượng có định nghĩa khác nhau, không phải các phần có thể cộng thẳng với nhau. Chúng cũng không đồng nhất với 300 nghìn tỷ token hiệu dụng. So sánh một kho raw crawl với kho đã chuẩn hóa chất lượng và điều chỉnh lặp lại sẽ giống như so sánh trọng lượng quặng với lượng kim loại thành phẩm: cả hai cùng có đơn vị đo nhưng trả lời câu hỏi khác nhau. Báo cáo nêu rõ sự khác biệt này, nên khi trích dẫn cần giữ nhãn “thô” hoặc “hiệu dụng” thay vì chỉ viết “kho văn bản”.</p>
+<p>Common Crawl mô tả kho lưu trữ của mình vượt 10 pebibyte và các đợt thu thập hàng tháng thường vượt 2 tỷ trang. Dung lượng lưu trữ và số trang cho biết quy mô hoạt động crawl, nhưng không chuyển đổi trực tiếp thành token ngôn ngữ sạch: một trang có thể chứa mã giao diện, quảng cáo, nội dung lặp, hình ảnh, bảng, hoặc văn bản ngắn; nhiều URL có thể chứa bản sao của cùng nội dung. Do đó, dung lượng byte không thể thay thế con số token sau làm sạch, tách ngôn ngữ, loại bản sao và đánh giá chất lượng. Cũng không thể coi toàn bộ trang thu thập là phần dữ liệu có thể dùng hợp pháp. (<a href="https://www.commoncrawl.org/about">Common Crawl: About</a>; <a href="https://commoncrawl.org/overview">Common Crawl: Overview</a>)</p>
+<p>Epoch đã thay đổi ước tính so với phân tích trước: web được lọc cẩn thận có thể đóng góp nhiều hơn giả định ban đầu, trong khi huấn luyện nhiều epoch khiến cùng một tập token có thể được sử dụng lặp lại với mức lợi ích giảm dần. Báo cáo năm 2024 đặt thời điểm chạm nguồn dữ liệu hiệu dụng trong khoảng kịch bản 2026–2032, với điểm trung tâm gần 2028 trong một giả định compute-optimal; các kịch bản overtraining mạnh hơn làm thời điểm đến sớm hơn. Đây là kết quả của ngoại suy tốc độ tăng dữ liệu huấn luyện và quy mô nhu cầu trong các mô hình tương lai. “Dùng hết” ở đây là nhu cầu huấn luyện chạm một ước tính nguồn cung theo mô hình, không phải internet ngừng sinh nội dung hoặc mọi nguồn văn bản bị cạn. Năm 2025, Epoch viết rằng nguồn văn bản công khai có thể còn đủ để mở rộng ít nhất đến 2027 theo phân tích cập nhật, đồng thời thảo luận các nguồn đa phương thức và dữ liệu tổng hợp như những phần mở rộng có tiềm năng. (<a href="https://epoch.ai/publications/what-will-ai-look-like-in-2030">Epoch AI, “What Will AI Look Like in 2030?”</a>)</p>
+
+<h2>3. Các dự báo về cạn dữ liệu cần được đọc như kịch bản</h2>
+<p>Một dự báo về ngày “hết dữ liệu” gộp nhiều bất định: tốc độ tăng kích thước tập huấn luyện, mức dữ liệu mà mô hình cần để tận dụng compute, chất lượng lọc, số epoch, dữ liệu cấp phép hoặc nội bộ mà công ty có thể truy cập, và mức tiết kiệm nhờ kiến trúc hay thuật toán mới. Nếu mỗi năm tập huấn luyện lớn hơn nhanh hơn tốc độ tạo mới nguồn văn bản có giá trị, một số cách scaling có thể va vào giới hạn biên trước khi toàn bộ nội dung công khai bị khai thác. Nhưng mốc dự báo sẽ thay đổi nếu mô hình tiếp tục cải thiện nhờ sử dụng dữ liệu tốt hơn, nếu một kho chuyên ngành mới được mở quyền, hoặc nếu hiệu suất tính toán thay đổi. Nói “nguồn văn bản sắp cạn” mà không trình bày giả định có thể biến một câu hỏi kinh tế và kỹ thuật thành tuyên bố tuyệt đối không được số liệu hỗ trợ.</p>
+<p>Phân tích 2030 của Epoch mở rộng thảo luận sang hình ảnh, âm thanh và video. Ước tính token hiệu dụng đa phương thức dao động rất rộng, khoảng 400 nghìn tỷ đến 20 triệu tỷ vào năm 2030, tùy cách quy đổi các dạng dữ liệu, chất lượng và khả năng lặp lại. Khoảng này không phải phép đo trực tiếp, và “token” của hình ảnh hoặc âm thanh không tương đương về ngữ nghĩa với token văn bản. Nếu số hình ảnh được chia thành nhiều patch hoặc âm thanh thành các khung thời gian, một mô hình có thể ghi nhận số token lớn hơn nhiều nhưng không tự động nhận thêm cùng lượng tri thức có thể sử dụng. Hạ tầng đa phương thức cần thêm lưu trữ, gắn nhãn, đồng bộ thời gian, quyền sử dụng và compute; vì vậy, nó làm rộng không gian dữ liệu nhưng không xóa chi phí hay bất định. Không nên viết rằng video sẽ tự động mở kho văn bản gấp 5–10 lần khi nguồn được trích dẫn không chứng minh tỷ lệ ấy.</p>
+<p>Một nghiên cứu tiền in arXiv tháng 9 năm 2026 phân tích khoảng 800 mô hình ngôn ngữ nhỏ từ 19,9 triệu đến 973 triệu tham số, và báo cáo rằng bộ phát hiện Pangram gắn nhãn 27,5% token vượt bộ lọc chất lượng FineWeb trong tháng 6 là do AI tạo; tỷ lệ trên mẫu tháng 8 là 31,1%. Nghiên cứu cũng ghi nhận dữ liệu AI giúp mô hình thiếu dữ liệu, nhưng lợi ích bão hòa hoặc suy giảm trên tập kiểm tra văn bản người khi ngân sách dữ liệu người lớn hơn. Đây là một tín hiệu đáng theo dõi về nguồn gốc dữ liệu, song không phải điều tra toàn bộ internet. Tỷ lệ phụ thuộc corpus đã lọc, bộ phát hiện, ngưỡng phân loại, ngôn ngữ và mẫu thời gian. Các thí nghiệm với mô hình dưới 1 tỷ tham số cũng không chứng minh mô hình biên lớn đã bị suy thoái. Cần coi đây là kết quả sơ bộ để đặt câu hỏi về provenance, không phải bằng chứng rằng web đã bị “ô nhiễm” ở một tỷ lệ phổ quát. (<a href="https://arxiv.org/abs/2609.40295">Russell và cộng sự, arXiv 2026, preprint</a>)</p>
+
+<h2>4. Model collapse xảy ra khi vòng lặp làm mất phần hiếm</h2>
+<p>Thuật ngữ “model collapse” thường được rút gọn thành cảnh báo rằng dữ liệu AI sẽ khiến AI sụp đổ. Cách mô tả này bỏ mất điều kiện cốt lõi trong thí nghiệm. Shumailov và cộng sự nghiên cứu tình huống dữ liệu do mô hình sinh ra được đưa vào tập huấn luyện của thế hệ sau, rồi quy trình lặp lại qua nhiều thế hệ. Khi các mẫu sinh bị dùng thay cho dữ liệu ban đầu, sai lệch nhỏ có thể được khuếch đại và những vùng ít xác suất trong phân phối gốc có thể biến mất dần. Bài báo thử nhiều họ mô hình, trong đó có mô hình ngôn ngữ, biến phân tự mã hóa và hỗn hợp Gaussian. Tác giả nhấn mạnh bảo tồn dữ liệu có nguồn gốc con người và theo dõi nguồn gốc vì nếu mô hình chỉ học đầu ra được lấy mẫu từ mô hình trước, phân phối mà nó thấy sẽ ngày càng thiếu các trường hợp hiếm. Đây là cơ chế cụ thể về thay thế đệ quy và suy giảm đuôi phân phối, không phải bằng chứng rằng chỉ cần thêm một số câu do AI viết là toàn mô hình suy thoái. (<a href="https://www.nature.com/articles/s41586-024-07566-y">Shumailov và cộng sự, Nature 2024</a>)</p>
+<p>Ví dụ trực quan là một mô hình được huấn luyện trên dữ liệu có nhiều câu trả lời phổ biến và một số câu trả lời hiếm. Khi mô hình tạo mẫu mới, nó thường tái tạo tốt các mẫu phổ biến hơn mẫu hiếm. Nếu thế hệ tiếp theo chỉ nhìn vào đầu ra mẫu đó mà không thấy lại dữ liệu gốc, phần hiếm có thể bị đại diện ít hơn nữa. Sau nhiều vòng, sự mất cân đối tích tụ. Mô tả này không có nghĩa mô hình sẽ trở thành chuỗi văn bản vô nghĩa sau đúng ba hay năm vòng lặp; số vòng và mức suy giảm tùy phân phối, lấy mẫu, kiến trúc, lượng dữ liệu, chất lượng lọc và thước đo. Bản thảo ban đầu nêu con số “3–5 vòng” như ngưỡng chắc chắn nhưng không có căn cứ tương ứng trong các nghiên cứu đã rà soát, nên con số ấy cần loại bỏ. Phân biệt cơ chế và ngưỡng đo được giúp tránh giật tít quá mức.</p>
+<p>Nghiên cứu Kazdan và cộng sự tại ICML 2025 kiểm tra ba chiến lược duy trì dữ liệu qua nhiều vòng: thay toàn bộ bằng dữ liệu thế hệ mới, tích lũy mọi thế hệ trước, và tích lũy kho nhưng mỗi vòng chỉ lấy mẫu một tập có kích thước cố định. Họ thử các thiết lập ước lượng phân phối Gaussian đa biến, ước lượng mật độ kernel và tinh chỉnh mô hình ngôn ngữ. Trong phạm vi đó, cách thay thế liên tục dẫn tới collapse, còn tích lũy toàn bộ dữ liệu gốc và dữ liệu mới giữ test loss trên dữ liệu thật ổn định hơn; lấy mẫu tập cố định suy giảm chậm hơn chiến lược thay thế. Kết quả không khẳng định rằng kho lưu vô hạn luôn khả thi về chi phí, nhưng chỉ ra rằng chính sách giữ mẫu dữ liệu gốc là một biến thiết kế quan trọng. Nếu dữ liệu gốc bị vứt bỏ sau khi sinh dữ liệu mới, mô hình mất một điểm neo để so sánh phân phối. (<a href="https://proceedings.mlr.press/v267/kazdan25a.html">Kazdan và cộng sự, ICML/PMLR 2025</a>)</p>
+<p>Kết luận thực hành không phải là cấm dữ liệu tổng hợp. Nó là tránh nhầm “dùng” với “thay thế hoàn toàn”, và tránh để một mô hình tự xác nhận chất lượng của chính dữ liệu nó vừa tạo. Gắn nguồn gốc cho mỗi ví dụ, giữ một tập kiểm tra người độc lập, đo trùng lặp giữa các thế hệ và duy trì một kho dữ liệu gốc có thể truy xuất là các điều kiện giúp nhận biết sai lệch. Các biện pháp này không đảm bảo loại bỏ mọi vấn đề; chúng khiến nhóm huấn luyện có thể phát hiện sớm hơn nếu một generator làm tăng câu trả lời khuôn mẫu, mất ngoại lệ hoặc giảm độ bao phủ. Nếu không có tập đánh giá đại diện, một đường cong loss giảm trên dữ liệu tổng hợp có thể chỉ cho thấy mô hình đang học tốt generator của mình, chứ không cải thiện khả năng trên dữ liệu mới.</p>
+
+<h2>5. “Synthetic data” bao gồm nhiều quy trình khác nhau</h2>
+<p>Dữ liệu tổng hợp không phải một loại vật liệu đồng nhất. Một ví dụ có thể là câu hỏi do mô hình tạo từ tài liệu gốc, một lời giải toán sinh rồi được kiểm tra bằng đáp án, mã nguồn được biên dịch và chạy trên bộ test, lời giải thích do mô hình lớn tạo để dạy mô hình nhỏ, hoặc một phản hồi được mô hình khác chấm điểm. Các dạng này khác về nguồn, mức kiểm chứng và khoảng cách tới dữ liệu thực tế. Dữ liệu tái diễn đạt giữ nội dung từ một nguồn nhưng đổi cách viết; dữ liệu tự chơi tạo bài toán và phản hồi trong một môi trường; dữ liệu giáo trình tổng hợp tạo ví dụ theo khuôn do mô hình suy ra; preference data dùng mô hình hoặc con người đánh giá một vài câu trả lời. Gọi tất cả là “dữ liệu AI” rồi gán cùng độ tin cậy sẽ che mất rủi ro cụ thể của từng pipeline.</p>
+<p>Self-Instruct minh họa cả khả năng mở rộng và nhu cầu kiểm tra. Nghiên cứu khởi động với 175 chỉ dẫn hạt giống, dùng mô hình tạo thêm nhiệm vụ và ví dụ rồi lọc các bản lỗi hoặc trùng. Trường hợp GPT-3 của bài báo tạo ra 52.445 chỉ dẫn và 82.439 instance sau bước lọc. Khi nhóm nghiên cứu kiểm tra thủ công 200 mẫu, 92% chỉ dẫn mô tả tác vụ hợp lệ, 79% input phù hợp, 58% output được đánh giá chấp nhận được hoặc đúng, nhưng chỉ 54% mẫu đạt đồng thời cả ba trường. Mô hình được tinh chỉnh trên tập dữ liệu này cải thiện 33,1% trên Super-NaturalInstructions so với GPT-3 nền trong đánh giá của nghiên cứu. Kết quả chứng minh việc tạo dữ liệu có thể mở rộng coverage trong một tác vụ, đồng thời cho thấy câu trả lời trông trôi chảy không đồng nghĩa với đúng. Một tỷ lệ lỗi 46% ở tiêu chí cả ba trường trong mẫu kiểm tra đủ để bác bỏ giả định rằng chỉ cần sinh nhiều là chất lượng sẽ tự xuất hiện. (<a href="https://arxiv.org/abs/2212.10560">Wang và cộng sự, Self-Instruct, ACL 2023</a>)</p>
+<p>WizardLM dùng Evol-Instruct để biến đổi câu hỏi hạt giống bằng cách thêm điều kiện, bước suy luận hoặc thay đổi bối cảnh, và có bộ lọc loại những ví dụ sinh thất bại. Trong thí nghiệm được báo cáo, bốn vòng tiến hóa mở rộng 175 chỉ dẫn ban đầu lên 250.000; nhóm dùng một mẫu 70.000 để so sánh. Người đánh giá cho WizardLM tỷ lệ thắng cao hơn Vicuna 12,4 điểm phần trăm trên bộ kiểm tra Evol-Instruct và 3,8 điểm trên bài kiểm tra Vicuna. Trên phần khó nhất (độ khó từ 8 trở lên), WizardLM thắng ChatGPT 42,9% so với 35,0%, nhưng trên toàn bộ tập Evol-Instruct lại thua ChatGPT 28,0% so với 40,8%. Những con số này phụ thuộc thiết kế bộ đo của bài báo và cách đánh giá bằng người hoặc GPT-4; chúng không phải điểm chính xác phổ quát trên mọi tác vụ. Chúng vẫn minh họa một nguyên tắc có giá trị: độ đa dạng và độ khó có thể được tạo có chủ đích, nhưng hiệu quả cần được đo trên một tập kiểm tra độc lập phù hợp với mục tiêu. (<a href="https://arxiv.org/abs/2304.12244">Xu và cộng sự, WizardLM, 2023</a>)</p>
+<p>Trong các miền có đáp án kiểm chứng, quy trình có thể gắn đầu ra với một phép thử bên ngoài. Với mã nguồn, hệ thống có thể biên dịch, chạy test hoặc kiểm tra đầu ra; với số học, có thể so sánh biểu thức chuẩn hóa hay dùng bộ kiểm tra chứng minh; với dữ liệu có schema, kiểm tra kiểu và quan hệ khóa; với truy vấn, thực thi trên cơ sở dữ liệu đóng. Cách làm này không biến generator thành hoàn hảo. Bộ test có thể thiếu trường hợp biên, đáp án chuẩn có thể sai, môi trường chạy không đại diện hoặc verifier có thể chấp nhận một nghiệm không đúng ngữ nghĩa. Nhưng nó bổ sung một nguồn tín hiệu khác ngoài việc mô hình tự nói “đúng”. Trong các lĩnh vực chủ quan như văn phong, sự hữu ích hoặc trung thực, kiểm chứng khó hơn và có thể cần đánh giá viên độc lập, hướng dẫn chấm rõ, nhiều nguồn đánh giá và kiểm tra thủ công một tỷ lệ mẫu.</p>
+
+<h2>6. Các kết quả tốt nhất gắn với mục tiêu và cách đo cụ thể</h2>
+<p>Kang và cộng sự tại EMNLP 2025 thực hiện một so sánh có hệ thống giữa văn bản tự nhiên từ Common Crawl đã xử lý qua RedPajama-v2, văn bản web được mô hình diễn đạt lại, văn bản dạng sách giáo khoa do mô hình tạo và các hỗn hợp của chúng. Phần thiết lập thí nghiệm trong bài mô tả xấp xỉ 600 biến thể mô hình đến 3 tỷ tham số, ngân sách dữ liệu đến 200 tỷ token và hơn 70.000 giờ GPU NVIDIA A100; phần tóm tắt bài báo nêu số lượng khác lớn hơn. Vì có chênh lệch cách báo cáo giữa tóm tắt và phần phương pháp, nên khi mô tả quy mô thí nghiệm cần ưu tiên phần setup và không lấy con số nổi bật nhất mà bỏ qua bối cảnh. Phạm vi là mô hình decoder-only dựa trên Llama-3, dữ liệu tiếng Anh, và các nguồn tổng hợp được tạo bằng Mistral-Instruct-7B-v0.1, nên các kết luận không trực tiếp cho biết tỷ lệ phù hợp với dữ liệu tiếng Việt hoặc mô hình biên lớn nhất.</p>
+<p>Kết quả được nhắc nhiều nhất là hỗn hợp gồm một phần ba văn bản được diễn đạt lại và hai phần ba văn bản web tự nhiên đạt cùng validation loss nhanh hơn 5–10 lần ở phân tích scaling theo ngân sách dữ liệu lớn. Đây là hiệu quả theo đường cong validation loss trong thiết lập thí nghiệm, không phải cam kết rằng thời gian huấn luyện mọi mô hình sản xuất giảm 5–10 lần hoặc mô hình tốt hơn 5–10 lần. Văn bản được diễn đạt lại riêng lẻ không nhanh hơn văn bản tự nhiên trong kết quả chính; dạng giáo trình tổng hợp riêng có loss cao hơn ở nhiều miền, đặc biệt với ngân sách thấp. Tác giả còn thấy tỷ lệ phù hợp thay đổi theo việc mở rộng trục dữ liệu hay kích thước mô hình: khoảng một phần ba rephrased thường hoạt động tốt trong một số so sánh theo data scale, trong khi tỷ lệ tổng hợp cao hơn có thể kém hơn khi tăng kích thước mô hình. Chỉ riêng những khác biệt này đã cho thấy không có “tỷ lệ 30%” tự động đúng trong mọi trường hợp. (<a href="https://aclanthology.org/2025.emnlp-main.544/">Kang và cộng sự, EMNLP 2025</a>)</p>
+<p>Ví dụ phi-1 của Microsoft dùng mô hình code 1,3 tỷ tham số được huấn luyện trước trên 6 tỷ token dữ liệu web chọn lọc theo tiêu chí “textbook quality” cùng 1 tỷ token sách giáo khoa và bài tập do GPT-3.5 tạo; sau đó fine-tune với dưới 200 triệu token dạng bài tập. Bài báo báo cáo pass@1 là 50,6% trên HumanEval và 55,5% trên MBPP cho công thức này. Có thể tính phần dữ liệu tổng hợp trong 7 tỷ token pretraining mô tả là khoảng 14,3%, nhưng con số ấy là mô tả một công thức cụ thể cho lập trình. Nó không chứng minh mọi mô hình ngôn ngữ nên có 14,3% dữ liệu tổng hợp, bởi ngôn ngữ, cấu trúc mã, bộ đánh giá và cách chọn dữ liệu đều khác. Giá trị của ví dụ nằm ở cách kết hợp dữ liệu được chọn lọc với bài tập sinh ra có mục tiêu, không phải ở việc biến một tỷ lệ thành tiêu chuẩn chung. (<a href="https://arxiv.org/abs/2306.11644">Gunasekar và cộng sự, “Textbooks Are All You Need”</a>)</p>
+<p>Orca xây dựng bộ prompt từ tập nhiệm vụ FLAN-v2 đa dạng, lấy phản hồi ChatGPT cho 5 triệu prompt và dùng phản hồi GPT-4 cho một tập con 1 triệu ở giai đoạn sau. Nhóm báo cáo công thức kết hợp vượt biến thể chỉ dùng 1 triệu ví dụ GPT-4 ở một số bài kiểm tra AGIEval; chẳng hạn AQuA-RAT đạt 27,9 so với 21,65, còn LogiQA đạt 35,2 so với 31,95. Đây là một phép ablation của kiến trúc và lịch huấn luyện Orca; không nên diễn giải thành quy tắc rằng hai giáo viên luôn tốt hơn một giáo viên, vì dữ liệu, thứ tự, chi phí gọi mô hình và đánh giá đều là thành phần của thí nghiệm. Bài báo cho thấy tín hiệu từ một giáo viên có khả năng hơn có thể giúp mô hình học lời giải chi tiết, trong khi dữ liệu đa nhiệm và trình tự huấn luyện cũng góp phần vào kết quả. (<a href="https://arxiv.org/abs/2306.02707">Mitra và cộng sự, Orca, 2023</a>)</p>
+<p>Distilling Step-by-Step của Google huấn luyện mô hình nhỏ trên cả câu trả lời mục tiêu và phần giải thích do mô hình giáo viên sinh. Trang nghiên cứu báo cáo một kết quả trong đó mô hình T5 770 triệu tham số vượt mô hình PaLM 540 tỷ tham số trên một benchmark với 80% dữ liệu huấn luyện benchmark ban đầu. Đây là kết quả trên một nhiệm vụ và cách chưng cất cụ thể; không phải chứng minh mô hình nhỏ luôn vượt mô hình lớn. Tầm quan trọng của nó nằm ở khả năng biến dữ liệu gắn nhãn ít thành supervision dày hơn: ngoài kết quả cuối, mô hình nhỏ được học thêm dấu vết giải thích. Tuy nhiên, nếu giải thích của giáo viên sai, nội dung đó có thể truyền sai lầm vào học sinh. Vì vậy, chất lượng của rationale, mức độ phù hợp với đáp án và độ bao phủ benchmark đều cần kiểm tra. (<a href="https://research.google/pubs/distilling-step-by-step-outperforming-larger-language-models-with-less-training-data-and-smaller-model-sizes/">Google Research, Distilling Step-by-Step</a>)</p>
+
+<h2>7. Bộ lọc và verifier giảm lỗi nhưng không tạo chân lý tuyệt đối</h2>
+<p>Một pipeline sinh dữ liệu có thể có các lớp kiểm tra khác nhau. Lớp cấu trúc kiểm tra JSON, độ dài, trường bắt buộc, định dạng và khả năng phân tích. Lớp chống trùng kiểm tra nội dung gần giống giữa ví dụ mới và dữ liệu đã có. Lớp chuyên môn đối chiếu với đáp án chuẩn hoặc tài liệu nguồn. Lớp chạy thử thực thi mã hay truy vấn trên môi trường kiểm soát. Lớp đánh giá người xem một mẫu có phân tầng theo chủ đề, độ khó, ngôn ngữ và nguồn generator. Mỗi lớp loại một loại lỗi; không có một lớp đơn lẻ có thể chứng minh mọi câu trả lời đúng. Ví dụ, JSON hợp lệ vẫn có thể chứa sự kiện sai; code chạy trên một test nhỏ vẫn có thể có lỗ hổng; người đánh giá có thể thiên lệch hoặc không đủ chuyên môn. Một thiết kế tốt báo cáo tỷ lệ pass trên từng gate và kiểm tra tỷ lệ false acceptance bằng mẫu gán nhãn độc lập.</p>
+<p>Trong dữ liệu preference, mô hình có thể chấm nhiều câu trả lời theo helpfulness, truthfulness hoặc calibration. UltraFeedback tạo khoảng 63.967 prompt từ sáu bộ dữ liệu công khai, lấy bốn phản hồi cho mỗi prompt từ nhiều mô hình và dùng GPT-4 để gắn nhãn một số thuộc tính, tạo khoảng 256.000 phản hồi. Nhóm bảo trì sau đó sửa vấn đề về score ảnh hưởng 2.628 completions, điều chỉnh hoặc gán nhãn lại một số rating. Việc phải hiệu chỉnh sau phát hành là minh họa cụ thể rằng nhãn do mô hình tạo hoặc đánh giá vẫn cần audit. Nếu bộ reward model học theo lỗi của nhãn, nó có thể thưởng câu trả lời nghe thuyết phục nhưng không đúng; một điểm số tổng hợp không thay cho đánh giá độ trung thực riêng. (<a href="https://github.com/OpenBMB/UltraFeedback">UltraFeedback: dữ liệu và ghi chú hiệu chỉnh</a>)</p>
+<p>Self-Verified Distillation, một preprint tháng 5 năm 2026, tạo nhiều lời giải ứng viên rồi chỉ giữ câu trả lời khi vượt qua các kiểm tra nhất quán vòng lặp, factuality và correctness. Trên Qwen3-4B, nhóm báo cáo mức tăng pass@1 là 16,7 điểm phần trăm ở toán, 11,1 ở khoa học và 8,3 ở lập trình, trên các bộ benchmark được nêu trong bài; họ cũng báo cáo lợi ích ở cỡ 0,6B và 8B. Con số đo theo điểm phần trăm trên các benchmark cụ thể, không phải tỷ lệ cải thiện tương đối 16,7% ở mọi tác vụ. Kết quả là bằng chứng tiền in; bộ verifier, tiêu chí đồng thuận và khả năng mở rộng sang tác vụ khác vẫn là giới hạn. Nếu mọi bộ kiểm tra cùng dựa vào một mô hình hoặc cùng kiến thức nguồn, chúng có thể mắc chung một lỗi. Một verifier đồng thuận có thể tăng precision nhưng từ chối nhiều đáp án đúng, làm giảm coverage. (<a href="https://arxiv.org/abs/2605.26132">Self-Verified Distillation, arXiv 2026, preprint</a>)</p>
+<p>Chất lượng dữ liệu tổng hợp vì thế nên được mô tả bằng một bộ chỉ số, không chỉ là số lượng ví dụ được sinh. Có thể theo dõi tỷ lệ ví dụ qua từng gate, độ trùng lặp, tỷ lệ đúng trên mẫu đánh giá độc lập, chất lượng theo từng miền, tỷ lệ từ chối của verifier, mức bao phủ ngôn ngữ, và hiệu năng trên tập dữ liệu con người chưa thấy. Cũng cần giữ mã phiên bản của generator, prompt, bộ lọc, mô hình chấm điểm và nguồn seed, để khi kết quả xấu đi có thể truy ngược thay đổi. Nếu chỉ báo cáo 1 triệu ví dụ được sinh mỗi ngày, mà không báo cáo bao nhiêu ví dụ qua được kiểm tra và còn hữu ích trên benchmark mới, quy mô tạo ra chưa nói được giá trị đào tạo.</p>
+
+<h2>8. Không có tỷ lệ tổng hợp tối ưu cho mọi nhóm</h2>
+<p>Một tỷ lệ “30% dữ liệu tổng hợp” thường được trích từ kết quả EMNLP cụ thể, nhưng không phải mục tiêu phổ quát. Tỷ lệ một phần ba rephrased cộng hai phần ba tự nhiên hỗ trợ đường cong validation loss trong phân tích theo data scale của bài nghiên cứu đó. Mẫu dữ liệu là tiếng Anh dựa trên Common Crawl, generator cụ thể, mô hình tới 3 tỷ tham số; thay generator, miền, kích thước mô hình, ngân sách huấn luyện hay thước đo có thể đổi kết quả. Tỷ lệ phù hợp cho code có test tự động không nhất thiết phù hợp cho tin tức, y tế, lịch sử hoặc tiếng Việt. Tỷ lệ tổng hợp trong phi-1 xấp xỉ 14,3% của pretraining tokens; Orca dùng nhiều giai đoạn và hai nhóm giáo viên; Self-Instruct tập trung vào instruction tuning. Các ví dụ này không đo cùng mục tiêu nên không thể gom thành một con số chung.</p>
+<p>Để tìm tỷ lệ cho một dự án, cần giữ cố định kiến trúc, ngân sách compute, nguồn dữ liệu gốc và tập đánh giá, sau đó so sánh nhiều mức pha trộn bao gồm 0% tổng hợp. Những mức này có thể được xác định theo thiết kế thí nghiệm thay vì sao chép con số từ bài khác. Đo ít nhất hai thứ: mức cải thiện trên tác vụ mục tiêu và khả năng giữ nguyên chất lượng trên các tập dữ liệu độc lập, đa dạng. Với dữ liệu có provenance rõ, lưu riêng nhãn nguồn gốc và phiên bản. Nếu tăng tổng hợp làm một benchmark tăng nhưng factuality hoặc đa dạng giảm, quyết định cần nhìn vào trade-off, không chỉ tổng điểm. Đối với dự án ít compute, có thể thử nghiệm trên mô hình nhỏ trước để loại công thức kém, nhưng kết quả pilot chưa thay thế được xác nhận ở quy mô đích.</p>
+<p>Không thể hiểu “synthetic” là luôn rẻ hơn. Sinh dữ liệu đòi hỏi trả compute và API, kiểm tra, lưu trữ và xử lý lỗi. Một mô hình giáo viên lớn có thể tạo ví dụ nhanh hơn so với con người viết thủ công, nhưng phần tiết kiệm phụ thuộc giá generation, tỷ lệ pass, chi phí gán nhãn và giá trị huấn luyện của ví dụ. Nếu chỉ 54% mẫu Self-Instruct đạt đồng thời ba trường trong audit thủ công, việc tăng volume mà không tăng lọc có thể làm chi phí kiểm tra tăng cùng. Nhiều lượt tạo rồi loại bỏ cũng có thể tiêu tốn compute đáng kể. So sánh kinh tế nên tính chi phí trên mỗi ví dụ đủ điều kiện và mỗi điểm cải thiện đã xác nhận, thay vì chi phí trên mỗi token được sinh.</p>
+
+<h2>9. Bốn lựa chọn kỹ thuật giải quyết bốn phần thiếu khác nhau</h2>
+<p>Nếu thiếu bao phủ tác vụ, tạo instruction hoặc biến thể cho tác vụ hiếm có thể giúp, với điều kiện giữ tập kiểm tra người và loại ví dụ trùng. Nếu thiếu độ chính xác ở tác vụ có đáp án máy kiểm tra được, tạo nhiều lời giải rồi chạy verifier có thể bổ sung coverage; cần đo false acceptance và false rejection. Nếu thiếu độ sâu giám sát cho mô hình nhỏ, chưng cất rationale hoặc trace có thể giúp mô hình học quy trình; cần lấy mẫu kiểm tra lý lẽ chứ không chỉ câu trả lời cuối. Nếu rủi ro lớn nhất là lặp lại nguồn và mất phần hiếm, chính sách tích lũy dữ liệu gốc, gắn provenance và kiểm tra đa dạng là quan trọng hơn việc tăng sản lượng sinh. Các lựa chọn này bổ sung nhau nhưng không thể hoán đổi: verifier không tạo thêm dữ liệu người, giữ nguồn không đảm bảo dữ liệu đủ liên quan, còn tổng hợp nhiều không giải quyết quyền truy cập hoặc bản quyền.</p>
+<p>Self-Instruct và WizardLM chủ yếu mở rộng chỉ dẫn và độ đa dạng tác vụ; Orca nghiên cứu trình tự dữ liệu và phản hồi nhiều giáo viên; phi-1 nhắm tới code và dữ liệu sách giáo khoa; Distilling Step-by-Step truyền mục tiêu cùng lời giải thích; Self-Verified Distillation thêm cơ chế lọc nghiệm. Những hệ thống này đều hướng tới một mục tiêu cụ thể. Chúng không phải chứng cứ rằng mô hình cơ bản có thể tiếp tục tăng quy mô chỉ bằng cách tự sinh thêm văn bản. Cần phân biệt “dữ liệu tổng hợp làm fine-tuning tốt hơn trên một nhiệm vụ” với “dữ liệu tổng hợp thay thế kho văn bản tự nhiên trong pretraining đa năng”. Bằng chứng cho mệnh đề đầu có nhiều ví dụ theo từng thí nghiệm; mệnh đề thứ hai rộng hơn và chưa được xác lập bởi các nguồn đã khảo sát.</p>
+<p>Ở cấp độ nghiên cứu và vận hành, một rollout thận trọng nên ghi lại: loại nguồn gốc, mô hình tạo, phiên bản prompt, ngày sinh, cách lọc, ngôn ngữ, miền, license hoặc quyền truy cập của nguồn gốc, và phép kiểm chứng đã qua. Dùng một tập kiểm tra được giữ ngoài quy trình tạo; không để generator nhìn thấy đáp án của tập đó. Đặt ngưỡng riêng cho các nhóm tác vụ, vì một verifier cho code không thể chấm chất lượng bài luận hoặc một bộ chấm tiếng Anh không đánh giá đầy đủ văn bản tiếng Việt. Phân tích lỗi theo nhóm, đặc biệt các ví dụ hiếm hoặc có chi phí sai cao. Dữ liệu không nên bị xóa khỏi tập nguồn chỉ vì một thế hệ mới tạo ra phiên bản khác; nếu cần giảm kích thước, lưu mẫu đại diện và provenance để các nhóm sau còn đo được thay đổi.</p>
+
+<h2>10. Kịch bản 2026–2030 nên trình bày như lựa chọn, không phải xác suất</h2>
+<table><thead><tr><th>Hướng phát triển</th><th>Cơ chế</th><th>Điều kiện cần đo</th><th>Giới hạn chính</th></tr></thead><tbody>
+<tr><td>Mở rộng dữ liệu đa phương thức</td><td>Huấn luyện trên hình ảnh, âm thanh, video hoặc kết hợp với văn bản.</td><td>Chất lượng nhãn, quyền dùng, quy đổi token, chi phí lưu trữ và compute.</td><td>Token đa phương thức không tương đương trực tiếp với token văn bản; lượng thô không bằng thông tin hữu ích.</td></tr>
+<tr><td>Dữ liệu tổng hợp có mục tiêu</td><td>Tạo ví dụ, lời giải, phản hồi hoặc biến thể để lấp khoảng trống cụ thể.</td><td>Tỷ lệ qua kiểm tra độc lập, kết quả trên dữ liệu mới, độ đa dạng và chi phí mỗi ví dụ đạt chuẩn.</td><td>Nguy cơ tự củng cố lỗi nếu dữ liệu gốc bị thay thế hoặc verifier yếu.</td></tr>
+<tr><td>Hiệu quả thuật toán và inference</td><td>Thay đổi cách sử dụng compute, kiến trúc, retrieval hoặc suy luận lúc chạy.</td><td>Chất lượng trên cùng ngân sách, latency, chi phí truy vấn và độ ổn định.</td><td>Inference compute không loại bỏ nhu cầu dữ liệu huấn luyện; nó chuyển một phần chi phí sang lúc dùng.</td></tr>
+<tr><td>Giảm tốc mở rộng thuần túy</td><td>Ưu tiên mô hình nhỏ, dữ liệu chuyên ngành và hiệu quả triển khai.</td><td>Chi phí vòng đời, độ chính xác theo tác vụ, bảo trì và cập nhật.</td><td>Không đồng nghĩa với việc AI dừng tiến bộ; lợi ích chuyển sang tối ưu theo use case.</td></tr>
+</tbody></table>
+<p>Bảng này không đưa ra xác suất 45%, 40% hay 15%, bởi các nguồn được khảo sát không cung cấp một mô hình dự báo định lượng đủ để hỗ trợ những tỷ lệ đó. Thay vào đó, mỗi hướng được xem như một lựa chọn nghiên cứu có điều kiện và chỉ số quan sát. Dữ liệu video có thể tăng phần đầu vào, nhưng cần đo chi phí, quyền truy cập, độ tin cậy của timestamp và mức độ liên quan tới năng lực mong muốn. Dữ liệu tổng hợp có thể mở rộng một miền, nhưng cần theo dõi nguồn và độ chính xác. Inference-time compute có thể cải thiện cách sử dụng mô hình ở một số bài toán, nhưng làm tăng latency hoặc chi phí cho mỗi truy vấn. Mô hình nhỏ có thể rẻ hơn khi triển khai chuyên biệt, nhưng cần đầu tư vào dữ liệu và đánh giá theo miền. Những hướng này có thể đồng thời xảy ra; chúng không nhất thiết là những kịch bản loại trừ nhau.</p>
+
+<h2>11. Checklist ra quyết định cho nhóm xây dựng mô hình</h2>
+<div class="data-highlight"><h4>Các câu hỏi cần trả lời trước khi tăng tỷ trọng dữ liệu tổng hợp</h4><ul>
+<li><strong>Mục tiêu cụ thể là gì?</strong> Tách pretraining nền tảng khỏi instruction tuning và kiểm tra tác vụ. Ghi rõ benchmark, phạm vi ngôn ngữ, tiêu chí pass/fail và các lỗi có chi phí cao.</li>
+<li><strong>Dữ liệu đến từ đâu?</strong> Lưu nguồn, license hoặc điều kiện truy cập, model generator, ngày tạo, prompt, phiên bản và quan hệ với dữ liệu gốc. Tách dữ liệu người, dữ liệu tổng hợp, dữ liệu tái diễn đạt và dữ liệu được gán nhãn.</li>
+<li><strong>Ví dụ được xác minh bằng gì?</strong> Dùng test thực thi, đáp án chuẩn, schema, nguồn truy xuất, đánh giá viên hoặc tổ hợp phù hợp. Kiểm tra một mẫu ngẫu nhiên và một mẫu rủi ro cao ngay cả khi tất cả đều qua tự động.</li>
+<li><strong>Thước đo độc lập có giữ được không?</strong> Đánh giá trên dữ liệu mới, tập người viết riêng và tập kiểm tra có phân tầng theo miền, độ khó và ngôn ngữ. Báo cáo điểm tổng thể cùng lỗi nhóm; không chỉ báo cáo loss trên dữ liệu sinh.</li>
+<li><strong>Hỗn hợp nào thực sự có lợi?</strong> Chạy đối chứng 0% tổng hợp và nhiều mức trong cùng ngân sách. Không chuyển một tỷ lệ từ paper tiếng Anh hoặc một mô hình code sang pipeline khác mà không kiểm nghiệm.</li>
+<li><strong>Chi phí tính theo ví dụ đạt chuẩn là bao nhiêu?</strong> Tính generation, compute, API, lọc, audit và storage trên mỗi ví dụ được xác nhận, đồng thời tính chi phí tăng thêm cho mỗi mức cải thiện được đo.</li>
+<li><strong>Có đang thay thế dữ liệu gốc không?</strong> Giữ kho dữ liệu ban đầu hoặc mẫu đại diện có provenance; theo dõi tỷ lệ dữ liệu gốc qua mỗi vòng. Thử nghiệm thay thế và tích lũy như những điều kiện khác nhau, không gộp chúng.</li>
+</ul></div>
+<p>Checklist không loại bỏ rủi ro, nhưng biến quyết định “synthetic có tốt không?” thành chuỗi giả thuyết có thể kiểm tra. Mỗi nhóm có thể đặt ngưỡng phù hợp với quy mô và mức độ rủi ro. Chẳng hạn, với code, một pipeline có thể theo dõi compile rate và pass rate trên test ẩn, sau đó audit mẫu lỗi; với tác vụ trả lời về sự kiện, cần đo trích dẫn có khớp nguồn và cập nhật theo thời gian; với instruction tuning, cần lấy người đánh giá xem prompt có tự nhiên và phản hồi có đúng yêu cầu. Một mô hình có thể cải thiện điểm trung bình nhưng thất bại trên một phân khúc ít gặp, vì thế phân tích theo nhóm là thiết yếu. Không có một tỷ lệ synthetic nào bù được việc chọn sai benchmark hoặc lọt lỗi có hệ thống.</p>
+
+<h2>12. Kết luận: cần quản trị provenance trước khi tăng volume</h2>
+<p>“Bức tường dữ liệu” là một câu hỏi về nguồn cung văn bản hữu ích dưới những giả định cụ thể, không phải thời điểm mà kho tri thức của nhân loại cạn sạch. Ước tính 300T token của Epoch AI có khoảng bất định rộng và đã điều chỉnh chất lượng cùng khả năng tái sử dụng; các phân tích mới hơn vẫn đặt ra những kịch bản khác nhau về thời điểm dữ liệu công khai đủ cho scaling. Tương tự, nghiên cứu model collapse chỉ ra một rủi ro có cơ chế rõ khi đầu ra mô hình thay thế đệ quy dữ liệu gốc, còn các nghiên cứu về tích lũy và phối trộn cho kết quả khác. Cần nói đúng điều kiện thí nghiệm trước khi khái quát kết luận.</p>
+<p>Dữ liệu tổng hợp hữu ích nhất khi nó lấp một khoảng trống có tên gọi, có tiêu chí xác minh, có phép đo ngoài generator và được lưu cùng nguồn gốc. Self-Instruct cho thấy sinh được hàng chục nghìn ví dụ nhưng audit vẫn tìm thấy lỗi; các thử nghiệm hỗn hợp cho thấy một tỷ lệ có lợi ở miền cụ thể nhưng không tạo ra tỷ lệ chung; verifier có thể tăng độ tin cậy nhưng chính verifier cũng cần đánh giá. Vì thế, hướng thực tế không phải “thay người bằng máy” hoặc “cấm mọi dữ liệu AI”, mà là giữ dữ liệu gốc có thể truy xuất, sinh có mục tiêu, lọc theo miền, đánh giá độc lập và theo dõi chi phí trên mỗi ví dụ đạt chuẩn. Đó là cách tiếp cận biến dữ liệu tổng hợp từ một lời hứa về số lượng thành một công cụ có thể đo được hiệu quả, sai số và giới hạn.</p>
+
+<div class="ref-list"><h4>Nguồn nghiên cứu chính</h4><ol>
+<li><a href="https://epoch.ai/publications/will-we-run-out-of-data-limits-of-llm-scaling-based-on-human-generated-data">Epoch AI (2024), Will We Run Out of Data? Limits of LLM Scaling Based on Human-Generated Data</a>.</li>
+<li><a href="https://epoch.ai/publications/what-will-ai-look-like-in-2030">Epoch AI, What Will AI Look Like in 2030?</a>.</li>
+<li><a href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/c1e2faff6f588870935f114ebe04a3e5-Abstract.html">Hoffmann et al. (2022), Training Compute-Optimal Large Language Models</a>.</li>
+<li><a href="https://www.nature.com/articles/s41586-024-07566-y">Shumailov et al. (2024), AI models collapse when trained on recursively generated data, Nature</a>.</li>
+<li><a href="https://proceedings.mlr.press/v267/kazdan25a.html">Kazdan et al. (2025), Collapse or Thrive: Perils and Promises of Synthetic Data in a Self-Generating World, ICML/PMLR</a>.</li>
+<li><a href="https://aclanthology.org/2025.emnlp-main.544/">Kang et al. (2025), Demystifying Synthetic Data in LLM Pre-training: A Systematic Study of Scaling Laws, Benefits, and Pitfalls, EMNLP</a>.</li>
+<li><a href="https://arxiv.org/abs/2212.10560">Wang et al. (2023), Self-Instruct</a>; <a href="https://arxiv.org/abs/2304.12244">Xu et al. (2023), WizardLM</a>.</li>
+<li><a href="https://arxiv.org/abs/2306.11644">Gunasekar et al. (2023), Textbooks Are All You Need</a>; <a href="https://arxiv.org/abs/2306.02707">Mitra et al. (2023), Orca</a>.</li>
+<li><a href="https://research.google/pubs/distilling-step-by-step-outperforming-larger-language-models-with-less-training-data-and-smaller-model-sizes/">Hsieh et al. (2023), Distilling Step-by-Step, Google Research</a>; <a href="https://github.com/OpenBMB/UltraFeedback">UltraFeedback dataset and correction notes</a>.</li>
+<li><a href="https://arxiv.org/abs/2605.26132">Self-Verified Distillation (2026), preprint</a>; <a href="https://arxiv.org/abs/2609.40295">Russell et al. (2026), preprint on AI-labeled web data</a>.</li>
+<li><a href="https://www.commoncrawl.org/about">Common Crawl, About</a>; <a href="https://commoncrawl.org/overview">Common Crawl, Overview</a>.</li>
+</ol><p><em>Ghi chú phương pháp:</em> Nguồn tiền in và kết quả trên benchmark nhỏ hơn được ghi rõ là như vậy. Bài không ước lượng xác suất cho các kịch bản 2026–2030 và không đề xuất một tỷ lệ dữ liệu tổng hợp chung. Các con số là kết quả trong thiết lập nguồn được dẫn, không phải khuyến nghị mặc định cho mọi mô hình hoặc dữ liệu tiếng Việt.</p></div>
+
+  <div class="footer-sig">
+    <p>© 2026 <strong>SOI SỐ</strong> (soisovn.substack.com) · Bản quyền nội dung thuộc về tác giả <strong>Duy Lê</strong>.</p>
+    <p>Ấn phẩm phân tích dữ liệu độc lập tuân thủ Tiêu chuẩn Khoa học Thực chứng (Empirical Scientific Standard).</p>
+  </div>
+</div>
+</body>
+</html>
